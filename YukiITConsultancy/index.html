@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yuki-IT Consultancy</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap)" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <div class="logo">Yuki<span>IT</span></div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why-us">Why Us</a></li>
+        <li><a href="#signup" class="btn-nav">Get Free Consultation</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+    <div class="particles" id="particles"></div>
+
+    <div class="container hero-inner">
+      <div class="hero-text fade-up">
+        <span class="badge">✦ Trusted IT Partner for Growing Businesses</span>
+        <h1>Scale Smarter with<br/><span class="highlight" id="typewriter"></span></h1>
+        <p class="hero-sub">From infrastructure strategy to cybersecurity and digital transformation — we help businesses reduce risk, cut costs, and grow faster.</p>
+        <div class="hero-cta">
+          <a href="#signup" class="btn-primary">Get a Free Strategy Call →</a>
+          <p class="hero-note">🔒 No commitment. Results-focused. 100% free.</p>
+        </div>
+      </div>
+
+      <div class="hero-card float-card fade-up delay-2">
+        <div class="card-icon">🚀</div>
+        <div class="stat-item">
+          <p class="card-stat counter" data-target="200" data-suffix="+">0+</p>
+          <p class="card-label">Businesses Transformed</p>
+        </div>
+        <hr/>
+        <div class="stat-item">
+          <p class="card-stat counter" data-target="98" data-suffix="%">0%</p>
+          <p class="card-label">Client Satisfaction Rate</p>
+        </div>
+        <hr/>
+        <div class="stat-item">
+          <p class="card-stat counter" data-target="15" data-suffix="+">0+</p>
+          <p class="card-label">Years of IT Experience</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+      <p>Scroll to explore</p>
+    </div>
+  </section>
+
+  <!-- TRUSTED BY -->
+  <section class="social-proof">
+    <p class="proof-label">⭐ Trusted by teams at</p>
+    <div class="marquee-wrapper">
+      <div class="marquee-track">
+        <div class="marquee-item"><span class="brand-logo">Accenture</span></div>
+        <div class="marquee-item"><span class="brand-logo">Deloitte</span></div>
+        <div class="marquee-item"><span class="brand-logo">Microsoft</span></div>
+        <div class="marquee-item"><span class="brand-logo">AWS</span></div>
+        <div class="marquee-item"><span class="brand-logo">Cisco</span></div>
+        <div class="marquee-item"><span class="brand-logo">Accenture</span></div>
+        <div class="marquee-item"><span class="brand-logo">Deloitte</span></div>
+        <div class="marquee-item"><span class="brand-logo">Microsoft</span></div>
+        <div class="marquee-item"><span class="brand-logo">AWS</span></div>
+        <div class="marquee-item"><span class="brand-logo">Cisco</span></div>
+        <div class="marquee-item"><span class="brand-logo">Accenture</span></div>
+        <div class="marquee-item"><span class="brand-logo">Deloitte</span></div>
+        <div class="marquee-item"><span class="brand-logo">Microsoft</span></div>
+        <div class="marquee-item"><span class="brand-logo">AWS</span></div>
+        <div class="marquee-item"><span class="brand-logo">Cisco</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>What We Do</h2>
+        <p class="section-sub">End-to-end IT solutions tailored to your business goals.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon">☁️</div>
+          <h3>Cloud Strategy</h3>
+          <p>Migrate, optimize, and scale on AWS, Azure, or Google Cloud with zero disruption.</p>
+          <div class="card-line"></div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">🔒</div>
+          <h3>Cybersecurity</h3>
+          <p>Protect your assets with enterprise-grade security audits, monitoring, and response.</p>
+          <div class="card-line"></div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">⚙️</div>
+          <h3>IT Infrastructure</h3>
+          <p>Design resilient, scalable infrastructure that grows with your team and demands.</p>
+          <div class="card-line"></div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">📊</div>
+          <h3>Digital Transformation</h3>
+          <p>Modernize legacy systems and workflows so your team can move faster, not slower.</p>
+          <div class="card-line"></div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">🛠️</div>
+          <h3>Managed IT Support</h3>
+          <p>24/7 proactive monitoring and support — your dedicated IT team, on demand.</p>
+          <div class="card-line"></div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">📋</div>
+          <h3>IT Compliance</h3>
+          <p>Stay compliant with ISO 27001, GDPR, SOC 2, and more — without the headache.</p>
+          <div class="card-line"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why-us" id="why-us">
+    <div class="container why-inner">
+      <div class="why-text reveal">
+        <h2>Why Businesses Choose Yuki-IT</h2>
+        <ul class="why-list">
+          <li>✅ Dedicated consultants — not ticket queues</li>
+          <li>✅ Fixed-scope projects with transparent pricing</li>
+          <li>✅ Proven ROI delivered within 90 days</li>
+          <li>✅ Industry-certified team (CISSP, TOGAF, AWS)</li>
+          <li>✅ Flexible engagement — project or retainer</li>
+        </ul>
+        <blockquote class="testimonial">
+          "Yuki-IT cut our infrastructure costs by 40% and had everything migrated in under 6 weeks. Phenomenal team."
+          <cite>— James R., CTO at FinVault</cite>
+        </blockquote>
+      </div>
+      <div class="orbit-wrapper reveal">
+        <div class="orbit-ring ring1">
+          <div class="orbit-dot dot1">Strategy</div>
+        </div>
+        <div class="orbit-ring ring2">
+          <div class="orbit-dot dot2">Security</div>
+        </div>
+        <div class="orbit-ring ring3">
+          <div class="orbit-dot dot3">Scale</div>
+        </div>
+        <div class="orbit-center">Yuki<span>IT</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIGNUP -->
+  <section class="signup" id="signup">
+    <div class="orb orb1" style="opacity:0.25;"></div>
+    <div class="orb orb2" style="opacity:0.15;"></div>
+    <div class="container">
+      <div class="form-wrapper reveal">
+        <div class="form-header">
+          <span class="form-badge">🚀 Free Consultation</span>
+          <h2>Get Your Free IT Consultation</h2>
+          <p>Tell us about your business and we'll match you with the right consultant — usually within 24 hours.</p>
+        </div>
+
+        <form id="consultForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fullname">Full Name <span class="req">*</span></label>
+              <input type="text" id="fullname" placeholder="Jane Smith" required/>
+            </div>
+            <div class="form-group">
+              <label for="email">Business Email <span class="req">*</span></label>
+              <input type="email" id="email" placeholder="jane@company.com" required/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="company">Company Name <span class="req">*</span></label>
+              <input type="text" id="company" placeholder="Acme Corp" required/>
+            </div>
+            <div class="form-group">
+              <label for="size">Company Size <span class="req">*</span></label>
+              <select id="size" required>
+                <option value="" disabled selected>Select company size</option>
+                <option value="1-10">1–10 employees</option>
+                <option value="11-50">11–50 employees</option>
+                <option value="51-200">51–200 employees</option>
+                <option value="200+">200+ employees</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="timeline">How soon are you looking to get started? <span class="req">*</span></label>
+            <select id="timeline" required>
+              <option value="" disabled selected>Select timeline</option>
+              <option value="asap">ASAP — I need help now</option>
+              <option value="1-3months">1–3 months</option>
+              <option value="exploring">Just exploring for now</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+  <label for="message">Briefly describe what you need help with <span class="req">*</span></label>
+  <textarea id="message" rows="5" placeholder="Tell us about your current IT challenges, goals, or project needs..." required></textarea>
+</div>
+
+          <div class="webhook-status" id="webhookStatus"></div>
+
+          <button type="submit" class="btn-submit" id="submitBtn">
+            <span id="btnText">Book My Free Consultation →</span>
+            <span class="spinner" id="spinner"></span>
+          </button>
+          <p class="form-note">🔒 Your information is safe. No spam, ever.</p>
+        </form>
+
+        <div class="success-msg" id="successMsg">
+          <div class="success-icon">✅</div>
+          <h3>You're booked in!</h3>
+          <p>A Yuki-IT consultant will reach out within 24 hours. Check your inbox.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="logo">Yuki<span>IT</span> Consultancy</div>
+      <p>© 2026 Yuki-IT Consultancy. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="mailto:hello@yukiit.com">hello@yukiit.com</a>
+      </div>
+    </div>
+  </footer>
+
+<script>
+const WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/27259922/ujx9zph/';
+
+const phrases = ['Expert IT Consultancy','Cloud Migration','Cybersecurity','Digital Transformation'];
+let pi = 0, ci = 0, deleting = false;
+const tw = document.getElementById('typewriter');
+function type() {
+  const word = phrases[pi];
+  tw.textContent = deleting ? word.slice(0, --ci) : word.slice(0, ++ci);
+  if (!deleting && ci === word.length) {
+    setTimeout(() => { deleting = true; type(); }, 1800);
+    return;
+  }
+  if (deleting && ci === 0) {
+    deleting = false;
+    pi = (pi + 1) % phrases.length;
+  }
+  setTimeout(type, deleting ? 55 : 95);
+}
+type();
+
+const pc = document.getElementById('particles');
+for (let i = 0; i < 28; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  p.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;
+    width:${2+Math.random()*3}px;height:${2+Math.random()*3}px;
+    animation-delay:${Math.random()*6}s;animation-duration:${5+Math.random()*7}s;`;
+  pc.appendChild(p);
+}
+
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', scrollY > 50);
+});
+
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      if (e.target.classList.contains('float-card')) runCounters();
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal, .fade-up, .float-card').forEach(el => revealObs.observe(el));
+
+document.querySelectorAll('.service-card').forEach((c, i) => c.style.transitionDelay = `${i*80}ms`);
+document.querySelectorAll('.why-list li').forEach((li, i) => {
+  li.style.opacity = 0;
+  li.style.transform = 'translateX(-20px)';
+  li.style.transition = `all 0.5s ease ${i*100}ms`;
+});
+
+const whyObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      document.querySelectorAll('.why-list li').forEach(li => {
+        li.style.opacity = 1;
+        li.style.transform = 'translateX(0)';
+      });
+    }
+  });
+}, { threshold: 0.2 });
+
+const whyList = document.querySelector('.why-list');
+if (whyList) whyObs.observe(whyList);
+
+let countered = false;
+function runCounters() {
+  if (countered) return;
+  countered = true;
+  document.querySelectorAll('.counter').forEach(el => {
+    const target = +el.dataset.target;
+    const suffix = el.dataset.suffix;
+    let n = 0;
+    const step = Math.max(1, Math.ceil(target / 60));
+    const t = setInterval(() => {
+      n = Math.min(n + step, target);
+      el.textContent = n + suffix;
+      if (n >= target) clearInterval(t);
+    }, 22);
+  });
+}
+
+document.getElementById('consultForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const btn = document.getElementById('submitBtn');
+  const btnText = document.getElementById('btnText');
+  const spinner = document.getElementById('spinner');
+  const status = document.getElementById('webhookStatus');
+
+  const payload = {
+    full_name: document.getElementById('fullname').value.trim(),
+    business_email: document.getElementById('email').value.trim(),
+    company_name: document.getElementById('company').value.trim(),
+    company_size: document.getElementById('size').value,
+    timeline: document.getElementById('timeline').value,
+    help_request: document.getElementById('message').value.trim(),
+    submitted_at: new Date().toISOString(),
+    source: 'Yuki-IT Landing Page'
+  };
+
+  btn.disabled = true;
+  btnText.textContent = 'Sending…';
+  spinner.style.display = 'inline-block';
+  status.className = 'webhook-status';
+  status.textContent = '';
+
+  try {
+    await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      mode: 'no-cors'
+    });
+
+    this.style.display = 'none';
+    document.getElementById('successMsg').style.display = 'flex';
+  } catch (err) {
+    status.className = 'webhook-status error';
+    status.textContent = '⚠️ Submission failed. Please email us at hello@yukiit.com';
+    btn.disabled = false;
+    btnText.textContent = 'Book My Free Consultation →';
+    spinner.style.display = 'none';
+  }
+});
+</script>
+</body>
+</html>
