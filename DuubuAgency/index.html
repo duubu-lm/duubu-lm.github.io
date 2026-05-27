@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Duubu Agency — Business Automation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    /* ── RESET & BASE ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0a0a0f;
+      --bg2:      #0f0f1a;
+      --bg3:      #13131f;
+      --surface:  #16162a;
+      --border:   rgba(255,255,255,0.07);
+      --purple:   #7c3aed;
+      --purple2:  #9d5cf5;
+      --accent:   #06d6a0;
+      --text:     #f0eeff;
+      --muted:    #8887a8;
+      --card-bg:  rgba(255,255,255,0.03);
+      --radius:   14px;
+      --font-head: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE TEXTURE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1.4rem;
+      letter-spacing: -0.5px;
+      color: var(--text);
+    }
+
+    .logo span { color: var(--purple2); }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--purple);
+      color: white !important;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--purple2) !important; color: white !important; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 24px 80px;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,58,237,0.18) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .hero-glow2 {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(6,214,160,0.08) 0%, transparent 70%);
+      top: 30%;
+      right: 10%;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(124,58,237,0.15);
+      border: 1px solid rgba(124,58,237,0.3);
+      color: var(--purple2);
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 6px 16px;
+      border-radius: 99px;
+      margin-bottom: 28px;
+      letter-spacing: 0.3px;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -1.5px;
+      margin-bottom: 24px;
+    }
+
+    h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--purple2), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--purple);
+      color: white;
+      padding: 14px 32px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: var(--font-body);
+    }
+
+    .btn-primary:hover {
+      background: var(--purple2);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(124,58,237,0.35);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      padding: 14px 32px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: var(--font-body);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.04);
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      padding: 48px 24px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg2);
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: var(--font-head);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -1px;
+    }
+
+    .stat-num span { color: var(--purple2); }
+
+    .stat-label {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 4px;
+      font-weight: 300;
+    }
+
+    /* ── SECTION ── */
+    section {
+      position: relative;
+      z-index: 1;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 520px;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ── SERVICES ── */
+    .services {
+      padding: 100px 0;
+      background: var(--bg);
+    }
+
+    .services-header {
+      margin-bottom: 56px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--purple), var(--accent));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .service-card:hover {
+      border-color: rgba(124,58,237,0.3);
+      transform: translateY(-3px);
+      background: rgba(124,58,237,0.05);
+    }
+
+    .service-card:hover::before { opacity: 1; }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(124,58,237,0.15);
+      border: 1px solid rgba(124,58,237,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 20px;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      padding: 3px 10px;
+      border-radius: 99px;
+      background: rgba(124,58,237,0.1);
+      border: 1px solid rgba(124,58,237,0.2);
+      color: var(--purple2);
+      font-weight: 500;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how {
+      padding: 100px 0;
+      background: var(--bg2);
+    }
+
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2px;
+      margin-top: 56px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .how-step {
+      background: var(--bg2);
+      padding: 36px 28px;
+      position: relative;
+    }
+
+    .step-num {
+      font-family: var(--font-head);
+      font-size: 3rem;
+      font-weight: 800;
+      color: rgba(124,58,237,0.15);
+      line-height: 1;
+      margin-bottom: 16px;
+      letter-spacing: -2px;
+    }
+
+    .how-step h3 {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .how-step p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* ── CONTACT / FORM ── */
+    .contact {
+      padding: 100px 0;
+      background: var(--bg);
+    }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .contact-info h2 {
+      font-family: var(--font-head);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .contact-info p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: 32px;
+    }
+
+    .contact-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .contact-item-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(124,58,237,0.1);
+      border: 1px solid rgba(124,58,237,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    /* ── FORM ── */
+    .form-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+    }
+
+    .form-title {
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .form-sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 28px;
+      font-weight: 300;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.3px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 11px 14px;
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+
+    .form-group select option {
+      background: var(--surface);
+      color: var(--text);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: rgba(124,58,237,0.5);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255,255,255,0.2);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 20px;
+      font-weight: 300;
+    }
+
+    .form-note strong {
+      color: var(--accent);
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--purple);
+      color: white;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: all 0.2s;
+      letter-spacing: 0.2px;
+    }
+
+    .btn-submit:hover {
+      background: var(--purple2);
+      box-shadow: 0 8px 24px rgba(124,58,237,0.35);
+    }
+
+    /* Form success state */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .form-success-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+    }
+
+    .form-success h3 {
+      font-family: var(--font-head);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .form-success p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px 24px;
+      border-top: 1px solid var(--border);
+      background: var(--bg2);
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    footer a {
+      color: var(--purple2);
+      text-decoration: none;
+    }
+
+    /* ── CHATBOT PLACEHOLDER ── */
+    /*
+      TYPEBOT EMBED GOES HERE
+      Replace this section with your Typebot embed code:
+
+      Standard embed (bubble):
+      <script type="module">
+        import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3/dist/web.js'
+        Typebot.initBubble({
+          typebot: "your-typebot-id",
+          theme: {
+            button: { backgroundColor: "#7c3aed" }
+          },
+        })
+      </script>
+
+      Until then, the fake chat button below is shown.
+    -->
+    .chat-bubble {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+    }
+
+    .chat-btn {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: var(--purple);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px rgba(124,58,237,0.4);
+      transition: all 0.2s;
+      font-size: 1.4rem;
+      color: white;
+      position: relative;
+    }
+
+    .chat-btn:hover {
+      transform: scale(1.08);
+      background: var(--purple2);
+    }
+
+    .chat-btn .badge {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      width: 14px;
+      height: 14px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+      animation: pulse 2s infinite;
+    }
+
+    .chat-popup {
+      position: absolute;
+      bottom: 70px;
+      right: 0;
+      width: 300px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      display: none;
+    }
+
+    .chat-popup.open { display: block; }
+
+    .chat-popup-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .chat-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .chat-popup-header h4 {
+      font-family: var(--font-head);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .chat-popup-header span {
+      font-size: 0.75rem;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .chat-popup-header span::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .chat-message {
+      background: rgba(255,255,255,0.04);
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .chat-start-btn {
+      width: 100%;
+      background: var(--purple);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: background 0.2s;
+    }
+
+    .chat-start-btn:hover { background: var(--purple2); }
+
+    .chat-note {
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 10px;
+      font-weight: 300;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .contact-wrap { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .stats-bar { gap: 32px; }
+      .form-card { padding: 24px; }
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="../index.html" class="logo" style="text-decoration:none;">Duubu<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Get Started</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-glow2"></div>
+    <div class="hero-content">
+      <div class="hero-badge">AI-Powered Business Automation</div>
+      <h1>We Automate Your Business<br/>So You Can Focus On<br/><em>What Matters</em></h1>
+      <p class="hero-sub">
+        From lead capture to client onboarding — we build automation systems that work 24/7,
+        so your team doesn't have to.
+      </p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="window.Typebot.open()">Get a Free Consultation</button>
+        <a href="#services" class="btn-ghost">See What We Do</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat fade-up">
+      <div class="stat-num">10<span>+</span></div>
+      <div class="stat-label">Tools Integrated</div>
+    </div>
+    <div class="stat fade-up">
+      <div class="stat-num">3<span>x</span></div>
+      <div class="stat-label">Faster Lead Response</div>
+    </div>
+    <div class="stat fade-up">
+      <div class="stat-num">0</div>
+      <div class="stat-label">Manual Follow-ups Needed</div>
+    </div>
+    <div class="stat fade-up">
+      <div class="stat-num">24<span>/7</span></div>
+      <div class="stat-label">Always Running</div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="services-header fade-up">
+        <span class="section-tag">What We Do</span>
+        <h2 class="section-title">Automation built for<br/>real business problems</h2>
+        <p class="section-sub">We build systems that connect your tools, qualify your leads, and keep your clients moving — automatically.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card fade-up">
+          <div class="service-icon">⚡</div>
+          <h3>Lead Generation Automation</h3>
+          <p>Capture, score, and route leads automatically. Hot leads get immediate follow-up. Cold leads get nurtured over time. No lead falls through the cracks.</p>
+          <div class="service-tags">
+            <span class="tag">GHL</span>
+            <span class="tag">AI Scoring</span>
+            <span class="tag">Make.com</span>
+          </div>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon">🔄</div>
+          <h3>Client Onboarding Systems</h3>
+          <p>New clients get welcomed, onboarded, and set up across all your tools the moment they sign. From contract to first day — fully automated.</p>
+          <div class="service-tags">
+            <span class="tag">Notion</span>
+            <span class="tag">Airtable</span>
+            <span class="tag">Webhooks</span>
+          </div>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon">🤖</div>
+          <h3>AI-Powered Follow-ups</h3>
+          <p>Stop chasing leads manually. Our AI reads intent, scores urgency, and sends the right message at the right time — without you lifting a finger.</p>
+          <div class="service-tags">
+            <span class="tag">GPT-4o Mini</span>
+            <span class="tag">Email Sequences</span>
+            <span class="tag">CRM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="container">
+      <div class="fade-up">
+        <span class="section-tag">How It Works</span>
+        <h2 class="section-title">Simple process,<br/>powerful results</h2>
+      </div>
+      <div class="how-grid fade-up">
+        <div class="how-step">
+          <div class="step-num">01</div>
+          <h3>You Fill a Form</h3>
+          <p>Tell us about your business, your tools, and what you want automated. Takes 2 minutes.</p>
+        </div>
+        <div class="how-step">
+          <div class="step-num">02</div>
+          <h3>We Audit Your Stack</h3>
+          <p>We map your current workflow and identify every manual step that can be automated.</p>
+        </div>
+        <div class="how-step">
+          <div class="step-num">03</div>
+          <h3>We Build It</h3>
+          <p>We connect your tools, build the workflows, test everything, and hand it over live.</p>
+        </div>
+        <div class="how-step">
+          <div class="step-num">04</div>
+          <h3>You Scale</h3>
+          <p>Your automation runs 24/7. You focus on growth. We're on standby if anything needs tuning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-wrap">
+
+        <div class="contact-info fade-up">
+          <span class="section-tag">Get In Touch</span>
+          <h2>Let's build your automation system</h2>
+          <p>Tell us about your business and what you want automated. We'll get back to you within 24 hours with a free audit of your current workflow.</p>
+          <div class="contact-detail">
+            <div class="contact-item">
+              <div class="contact-item-icon">📍</div>
+              <span>Marikina City, Philippines</span>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">✉️</div>
+              <span>hello@duubu.agency</span>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">⚡</div>
+              <span>Response within 24 hours</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-up">
+          <div id="form-content">
+            <div class="form-title">Get a Free Consultation</div>
+            <div class="form-sub">We'll respond within 24 hours with a custom automation plan.</div>
+
+            <!--
+              PLACEHOLDER FORM
+              Replace this entire form with your GHL embed code:
+              <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+              <iframe src="YOUR_GHL_FORM_URL" ...></iframe>
+
+              OR replace with Typebot embed for chatbot flow.
+            -->
+            <form id="lead-form" onsubmit="handleSubmit(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Full Name *</label>
+                  <input type="text" placeholder="Lance Montiague" required />
+                </div>
+                <div class="form-group">
+                  <label>Email *</label>
+                  <input type="email" placeholder="you@company.com" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Company Name</label>
+                <input type="text" placeholder="Your Business Name" />
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Industry *</label>
+                  <select required>
+                    <option value="" disabled selected>Select industry</option>
+                    <option>Tech / IT</option>
+                    <option>Medical / Clinic</option>
+                    <option>Legal / Law Firm</option>
+                    <option>Real Estate</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Service Interested In *</label>
+                  <select required>
+                    <option value="" disabled selected>Select service</option>
+                    <option>Automation Setup</option>
+                    <option>Consulting</option>
+                    <option>Development</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Monthly Budget *</label>
+                <select required>
+                  <option value="" disabled selected>Select budget range</option>
+                  <option>Below $500</option>
+                  <option>$500 - $2,000</option>
+                  <option>$2,000 - $5,000</option>
+                  <option>$5,000+</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Brief Message *</label>
+                <textarea placeholder="Tell us what you want to automate and any tools you currently use..." required></textarea>
+              </div>
+
+              <p class="form-note">
+                <strong>Note:</strong> This form will be replaced with a live AI-powered chatbot that qualifies your inquiry in real time.
+              </p>
+
+              <button type="submit" class="btn-submit">Send Message &rarr;</button>
+            </form>
+          </div>
+
+          <div class="form-success" id="form-success">
+            <div class="form-success-icon">✅</div>
+            <h3>Message Received!</h3>
+            <p>Thanks for reaching out. We'll get back to you within 24 hours with a free automation audit.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      &copy; 2026 <a href="#">Duubu Agency</a> &mdash;
+      Built by <a href="https://duubu-lm.github.io" target="_blank">Lance Montiague</a> &middot;
+      Automation VA &middot; Marikina, PH
+    </p>
+  </footer>
+
+  <script>
+    // ── FAKE FORM SUBMIT ──
+    function handleSubmit(e) {
+      e.preventDefault();
+      document.getElementById('form-content').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    }
+
+    // ── SCROLL ANIMATIONS ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+  <script type="module">
+    import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3/dist/web.js'
+    Typebot.initBubble({
+      typebot: "duubu-lead-qualifier-1pvft55",
+      previewMessage: {
+        message: "I have a question for you!",
+        autoShowDelay: 5000,
+      },
+      theme: {
+        button: { backgroundColor: "#00c9ff" },
+      },
+    })
+  </script>
+
+</body>
+</html>
