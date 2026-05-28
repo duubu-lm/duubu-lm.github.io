@@ -968,14 +968,63 @@ nav {
    MOBILE — Hero, Navigation, Work Samples only
    ============================================ */
 
+/* ── Hamburger button (hidden on desktop) ── */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  z-index: 110;
+}
+.nav-burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--muted);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease, background 0.25s ease;
+}
+.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); background: var(--accent); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); background: var(--accent); }
+
 /* ── Tablet (768px) ── */
 @media (max-width: 768px) {
   nav {
     padding: 0 24px;
+    position: relative;
   }
+  .nav-burger { display: flex; }
   .nav-links {
-    gap: 22px;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(2, 4, 8, 0.97);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--line);
+    padding: 12px 0 20px;
+    gap: 0;
+    z-index: 99;
   }
+  .nav-links.open { display: flex; }
+  .nav-links li { width: 100%; }
+  .nav-links a {
+    display: block;
+    padding: 14px 28px;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    border-bottom: 1px solid rgba(17,207,255,0.06);
+  }
+  .nav-links li:last-child a { border-bottom: none; }
+  .nav-links a:hover { color: var(--accent); background: rgba(17,207,255,0.04); }
   #page-hero .hero-content {
     padding: 0 20px;
     max-width: 100%;
@@ -988,30 +1037,13 @@ nav {
 /* ── Phone (480px) ── */
 @media (max-width: 480px) {
   nav {
-    flex-wrap: wrap;
-    height: auto;
-    padding: 12px 16px 10px;
-    gap: 8px;
-  }
-  .nav-links {
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-  .nav-links a {
-    font-size: 13px;
-    letter-spacing: 0.06em;
+    padding: 0 18px;
   }
   #page-hero {
-    padding-top: 96px;
-    align-items: flex-start;
-    overflow-y: auto;
-    max-height: 650px;
-    overflow: hidden;
+    padding-top: 66px;
   }
   #page-work.active {
-    padding-top: 96px;
+    padding-top: 66px;
   }
   #page-hero .hero-content {
     padding: 12px 18px 12px;
@@ -1054,10 +1086,14 @@ nav {
 /* ── Case Studies / About / Automations / Contact — Phone (480px) ── */
 @media (max-width: 480px) {
   #page-case-studies,
-  #page-about,
-  #page-contact {
-    padding-top: 96px;
+  #page-about {
+    padding-top: 88px;
+    padding-bottom: 48px;
     align-items: flex-start;
+    overflow-y: auto;
+  }
+  #page-contact {
+    padding-top: 66px;
     overflow-y: auto;
   }
   #page-case-studies .page-inner,

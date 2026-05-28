@@ -13,12 +13,16 @@
   <nav>
     <a href="#" class="nav-logo" id="homeLogo" aria-label="Go to home page">✦ Duubu LM</a>
 
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="#" data-section="work" data-transition="warp">Work</a></li>
       <li><a href="#" data-section="case-studies" data-transition="wormhole">Case Studies</a></li>
       <li><a href="#" data-section="about" data-transition="drift">About</a></li>
       <li><a href="#" data-section="contact" data-transition="pulse">Contact</a></li>
     </ul>
+
+    <button class="nav-burger" id="navBurger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <main id="app">
@@ -51,10 +55,12 @@
             <div class="card-icon">🚀</div>
             <h3>Yuki IT Consultancy</h3>
             <p>
-              A landing page built for an IT consultancy business — designed and developed
-              using HTML and CSS.
+              A custom webhook captures incoming IT service inquiries and routes them through
+              Zapier in real time. GPT-4o Mini scores each lead as Hot, Warm, or Cold —
+              flagging urgent leads for immediate outreach while others enter automated
+              HubSpot nurture sequences.
             </p>
-            <span class="card-tag">Web Design</span><br />
+            <span class="card-tag">Zapier · Webhooks · HubSpot · GPT-4o Mini</span><br />
             <a href="YukiITConsultancy/index.html" class="card-link">View Project →</a>
           </div>
 
@@ -62,10 +68,12 @@
             <div class="card-icon">🪐</div>
             <h3>Yuki QualiLead Funnel</h3>
             <p>
-              A lead generation funnel built on Systeme.io — designed to capture and qualify
-              IT service inquiries.
+              When a prospect fills out a Systeme.io funnel form, an n8n webhook instantly
+              passes the data to GPT-4o Mini for lead scoring. Hot leads trigger immediate
+              client notifications while Warm leads enter a structured HubSpot follow-up
+              sequence.
             </p>
-            <span class="card-tag">Funnel Design</span><br />
+            <span class="card-tag">n8n · HubSpot · Systeme.io · GPT-4o Mini</span><br />
             <a href="https://duubu-lm.systeme.io/1f91f4fe" class="card-link" target="_blank">View Project →</a>
           </div>
 
@@ -84,11 +92,35 @@
             <div class="card-icon">🏢</div>
             <h3>Duubu Agency</h3>
             <p>
-              A full business automation agency landing page — showcasing services,
-              pricing, and client workflows built to turn visitors into leads.
+              A full business automation system featuring an AI-powered Typebot chatbot
+              that qualifies leads, scores them via GPT-4o Mini, auto-creates GHL contacts
+              with nurture sequences, and logs every record in Airtable.
             </p>
-            <span class="card-tag">Agency · Web Design</span><br />
+            <span class="card-tag">Make.com · GHL · Typebot · Airtable</span><br />
             <a href="DuubuAgency/index.html" class="card-link">View Project →</a>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">⚖️</div>
+            <h3>Lawyer Full Client Lifecycle</h3>
+            <p>
+              A complete 5-stage client automation system for a law firm — from first
+              inquiry to signed contract, powered by GHL workflows and Make.com scenarios.
+            </p>
+            <span class="card-tag">GHL · Make.com · Airtable · Notion</span><br />
+            <a href="LawyerFirm/index.html" class="card-link">View Project →</a>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🧑‍💼</div>
+            <h3>New Hire Onboarding</h3>
+            <p>
+              A full-stack onboarding system that automatically creates Notion pages,
+              Airtable records, and sends welcome emails the moment a new hire is added
+              in GHL.
+            </p>
+            <span class="card-tag">GHL · Make.com · Notion · Airtable</span><br />
+            <a href="Onboarding/index.html" class="card-link">View Project →</a>
           </div>
         </div>
 
@@ -383,6 +415,33 @@
   </main>
 
   <script>
+    // ── HAMBURGER MENU ──
+    const burger = document.getElementById('navBurger');
+    const navLinks = document.getElementById('navLinks');
+
+    burger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      burger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+
+    // Close on nav link click
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        burger.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('nav')) {
+        burger.classList.remove('open');
+        navLinks.classList.remove('open');
+      }
+    });
+
+    // ── PAGE TRANSITIONS ──
     const pages = document.querySelectorAll('.page');
     const overlay = document.getElementById('transition-overlay');
     const homeLogo = document.getElementById('homeLogo');

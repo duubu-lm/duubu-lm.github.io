@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schedule a Consultation — Sterling Law Group</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #f7f8fa;
+      --primary: #1e3a5f;
+      --gold:    #c9a84c;
+      --text:    #1a1a2e;
+      --muted:   #64748b;
+      --card:    #ffffff;
+      --border:  #e2e8f0;
+      --shadow:  0 4px 28px rgba(0, 0, 0, 0.09);
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      overflow-x: hidden;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Georgia", "Times New Roman", serif;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Page shell ── */
+    .shell {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      animation: fadeIn 0.5s ease both;
+    }
+
+    /* ── Gold accent strip ── */
+    .top-strip {
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--gold));
+      flex-shrink: 0;
+    }
+
+    /* ── Header ── */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px;
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    }
+
+    .back-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.84rem;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      letter-spacing: 0.02em;
+      transition: color 0.2s ease;
+    }
+    .back-link:hover { color: var(--primary); }
+    .back-link svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+    .firm-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 3px;
+    }
+    .firm-name {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.04em;
+    }
+    .firm-icon { font-size: 1.1rem; }
+    .firm-tagline {
+      font-size: 0.7rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-weight: 600;
+    }
+
+    /* ── Main ── */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 44px 20px 60px;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      margin-bottom: 30px;
+      animation: fadeIn 0.5s 0.1s ease both;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .hero h1 {
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.2;
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+    }
+    .hero-sub {
+      font-size: 0.92rem;
+      color: var(--muted);
+      font-family: "Segoe UI", system-ui, sans-serif;
+      letter-spacing: 0.02em;
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--gold));
+      border-radius: 999px;
+      margin: 12px auto 0;
+    }
+
+    /* ── Form card ── */
+    .form-card {
+      width: 100%;
+      max-width: 620px;
+      background: var(--card);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--primary);
+      overflow: hidden;
+      animation: fadeIn 0.5s 0.18s ease both;
+    }
+
+    .form-card iframe {
+      display: block;
+      width: 100%;
+      height: 860px;
+      border: none;
+    }
+
+    /* ── Trust signals ── */
+    .trust {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 26px;
+      animation: fadeIn 0.5s 0.28s ease both;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-family: "Segoe UI", system-ui, sans-serif;
+      letter-spacing: 0.02em;
+    }
+    .trust-check {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ── Footer note ── */
+    .footer-note {
+      margin-top: 32px;
+      font-size: 0.72rem;
+      color: #b0b8c8;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      text-align: center;
+      letter-spacing: 0.02em;
+      animation: fadeIn 0.5s 0.35s ease both;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 540px) {
+      .topbar { padding: 14px 18px; }
+      .firm-tagline { display: none; }
+      .main { padding: 28px 14px 52px; }
+      .form-card { border-radius: 12px; }
+      .form-card iframe { height: 820px; }
+      .trust { gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="shell">
+
+    <!-- Accent strip -->
+    <div class="top-strip"></div>
+
+    <!-- Header -->
+    <header class="topbar">
+      <a href="../index.html" class="back-link">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 3L5 8l5 5"/>
+        </svg>
+        Back
+      </a>
+      <div class="firm-brand">
+        <div class="firm-name">
+          <span class="firm-icon">⚖️</span>
+          Sterling Law Group
+        </div>
+        <span class="firm-tagline">Trusted Counsel · Results Driven</span>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main class="main">
+
+      <!-- Hero -->
+      <div class="hero">
+        <span class="hero-eyebrow">Free Initial Consultation</span>
+        <h1>Schedule Your Consultation</h1>
+        <div class="divider"></div>
+        <p class="hero-sub" style="margin-top:14px;">
+          Tell us about your case and we'll connect you with the right attorney — confidentially and at no obligation.
+        </p>
+      </div>
+
+      <!-- GHL Form -->
+      <div class="form-card">
+        <iframe
+          src="https://api.leadconnectorhq.com/widget/form/cNqjsLNuSPjaXCNYzZdn"
+          style="width:100%;height:860px;border:none;display:block;"
+          id="inline-cNqjsLNuSPjaXCNYzZdn"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="Lawyer Inquiry Form"
+          data-height="546"
+          data-layout-iframe-id="inline-cNqjsLNuSPjaXCNYzZdn"
+          data-form-id="cNqjsLNuSPjaXCNYzZdn"
+          title="Lawyer Inquiry Form"
+        ></iframe>
+        <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+      </div>
+
+      <!-- Trust signals -->
+      <div class="trust">
+        <div class="trust-item">
+          <div class="trust-check">✓</div>
+          Free initial consultation
+        </div>
+        <div class="trust-item">
+          <div class="trust-check">✓</div>
+          100% Confidential
+        </div>
+        <div class="trust-item">
+          <div class="trust-check">✓</div>
+          Response within 24 hours
+        </div>
+      </div>
+
+      <p class="footer-note">Attorney-client privilege applies from first contact. All information is strictly confidential.</p>
+
+    </main>
+
+  </div>
+
+</body>
+</html>
