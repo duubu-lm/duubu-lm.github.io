@@ -130,8 +130,315 @@
           <h2 class="section-title">Workflows I've Built</h2>
           <div class="section-divider"></div>
 
-          <!-- CARD 1: IT Consultancy — FEATURED (wide) -->
-          <div class="acard acard-featured">
+          <!-- ROW 1: Duubu Agency + Lawyer -->
+          <div class="acard-row">
+
+            <!-- Duubu Agency Lead Nurture + Chatbot -->
+            <div class="acard">
+              <div class="acard-diagram">
+                <div class="adiag-bar">
+                  <span class="adiag-label">⬡ WORKFLOW DIAGRAM</span>
+                  <div class="adiag-controls">
+                    <button class="azoom" data-d="in">+</button>
+                    <button class="azoom" data-d="out">−</button>
+                    <button class="azoom" data-d="reset">⟳</button>
+                  </div>
+                </div>
+                <div class="adiag-vp">
+                  <div class="adiag-canvas" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;padding:20px;">
+                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;">
+                      <span style="background:#06b6d4;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">Typebot</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#e8450a;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">Make.com</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#10a37f;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">GPT-4o Mini</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#7c3aed;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">GHL</span>
+                      <span style="color:#11cfff;font-weight:700;">+</span>
+                      <span style="background:#18bfff;color:#0a0a0f;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">Airtable</span>
+                    </div>
+                    <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;width:100%;max-width:320px;">
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">① Visitor fills Typebot chatbot → name, email, budget, message</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">② GPT-4o Mini scores the lead → Hot, Warm, or Cold</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">③ GHL contact created → score tag + brief_message field stored</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">④ Hot tag triggers 3-email nurture sequence over 3 days</div>
+                    </div>
+                  </div>
+                  <span class="adiag-hint">Scroll to zoom · Drag to pan</span>
+                </div>
+              </div>
+              <div class="acard-info">
+                <div class="acard-icon-row">
+                  <span class="acard-icon">🤖</span>
+                  <div>
+                    <h3 class="acard-title">Duubu Agency Lead Nurture + Chatbot</h3>
+                    <div class="acard-chips">
+                      <span class="achip">Typebot</span><span class="achip">Make.com</span>
+                      <span class="achip">GPT-4o Mini</span><span class="achip">GHL</span><span class="achip">Airtable</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="acard-desc">A full lead nurture system triggered by an AI-powered chatbot embedded on the portfolio website. A visitor chats with Typebot, gets scored by GPT-4o Mini, auto-creates a GHL contact with a tag, logs to Airtable, and enters a 3-email nurture sequence. Zero manual work after setup.</p>
+                <div class="asteps">
+                  <div class="astep"><span class="astep-n">01</span><span class="astep-t">Visitor fills Typebot chatbot → name, email, industry, service, budget, message</span></div>
+                  <div class="astep"><span class="astep-n">02</span><span class="astep-t">Typebot sends webhook to Make.com on completion</span></div>
+                  <div class="astep"><span class="astep-n">03</span><span class="astep-t">GPT-4o Mini scores the lead → returns Hot, Warm, or Cold</span></div>
+                  <div class="astep"><span class="astep-n">04</span><span class="astep-t">HTTP POST creates GHL contact → score tag + brief_message custom field</span></div>
+                  <div class="astep"><span class="astep-n">05</span><span class="astep-t">Airtable logs all lead data → Name, Email, Industry, Service, Budget, Score</span></div>
+                  <div class="astep"><span class="astep-n">06</span><span class="astep-t">GHL detects hot tag → fires 3-email nurture sequence over 3 days</span></div>
+                </div>
+                <div class="aupgrade">
+                  <p class="aupgrade-title">⚡ Possible Upgrades</p>
+                  <p class="aupgrade-text">1. Add Warm lead sequence — 2 emails over 5 days with a lower commitment CTA.<br/>2. Real-time Slack alert when a Hot lead comes in — includes name, service, and score.<br/>3. 30-day re-engagement tag added automatically after the full nurture sequence ends.</p>
+                </div>
+                <div class="abest">
+                  <p class="abest-title">Best For</p>
+                  <div class="abest-row"><span class="abest-dot abest-sm"></span><span class="abest-size">Solo Agency</span><span class="abest-desc">Chatbot + AI scoring + GHL nurture + Airtable lead log</span></div>
+                  <div class="abest-row"><span class="abest-dot abest-md"></span><span class="abest-size">Growing Agency</span><span class="abest-desc">Warm/Cold sequences, Slack hot alerts, VA pipeline dashboard</span></div>
+                  <div class="abest-row"><span class="abest-dot abest-lg"></span><span class="abest-size">Scale</span><span class="abest-desc">Multi-funnel ingestion, territory routing, A/B sequence testing, revenue attribution</span></div>
+                </div>
+                <div class="avideo-label-row">
+                  <span class="avideo-chip">▶ Live Demo</span>
+                  <span class="avideo-sub">Watch the full lead scoring and nurture flow</span>
+                </div>
+                <div class="aiframe-box">
+                  <iframe src="https://www.youtube.com/embed/H-ysofLBejY" title="Duubu Agency Lead Nurture + Chatbot Demo" frameborder="0" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+
+            <!-- Lawyer Full Client Lifecycle -->
+            <div class="acard">
+              <div class="acard-diagram">
+                <div class="adiag-bar">
+                  <span class="adiag-label">⬡ WORKFLOW DIAGRAM</span>
+                  <div class="adiag-controls">
+                    <button class="azoom" data-d="in">+</button>
+                    <button class="azoom" data-d="out">−</button>
+                    <button class="azoom" data-d="reset">⟳</button>
+                  </div>
+                </div>
+                <div class="adiag-vp">
+                  <div class="adiag-canvas" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;padding:20px;">
+                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;">
+                      <span style="background:#7c3aed;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">GHL</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#e8450a;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">Make.com</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#10a37f;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">GPT-4o</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#f8a100;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">Notion</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#18bfff;color:#0a0a0f;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">Airtable</span>
+                    </div>
+                    <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;width:100%;max-width:320px;">
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">① Inquiry Form → Case type classified, emails sent</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">② Intake Submitted → Booking link sent instantly</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">③ Appointment Attended → Notion case file created</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">④ Contract Signed → Pipeline moves to Active Case</div>
+                    </div>
+                  </div>
+                  <span class="adiag-hint">CLICK TO EXPAND</span>
+                </div>
+              </div>
+              <div class="acard-info">
+                <div class="acard-icon-row">
+                  <span class="acard-icon">⚖️</span>
+                  <div>
+                    <h3 class="acard-title">Lawyer Full Client Lifecycle</h3>
+                    <div class="acard-chips">
+                      <span class="achip">GHL</span><span class="achip">Make.com</span>
+                      <span class="achip">GPT-4o</span><span class="achip">Notion</span><span class="achip">Airtable</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="acard-desc">A complete client management automation for a law firm — from first inquiry to active case file — across GHL, Make.com, Notion, and Airtable. 5 GHL workflows and 5 Make.com scenarios each own exactly one stage. No manual work except two human decision points: deciding to send the contract, and marking a case as converted.</p>
+                <div class="asteps">
+                  <div class="astep"><span class="astep-n">01</span><span class="astep-t">Inquiry form submitted → case type classified, confirmation &amp; intake emails sent</span></div>
+                  <div class="astep"><span class="astep-n">02</span><span class="astep-t">Intake form submitted → calendar booking link sent immediately via sub-workflow</span></div>
+                  <div class="astep"><span class="astep-n">03</span><span class="astep-t">Appointment attended → Notion case file created, Airtable status updated</span></div>
+                  <div class="astep"><span class="astep-n">04</span><span class="astep-t">Lawyer adds tag → contract email sent, 48hr wait, checks for contract-signed</span></div>
+                  <div class="astep"><span class="astep-n">05</span><span class="astep-t">Contract signed → pipeline moves to Active Case, Notion &amp; Airtable both updated</span></div>
+                </div>
+                <div class="aupgrade">
+                  <p class="aupgrade-title">⚡ Possible Upgrades</p>
+                  <p class="aupgrade-text">1. GPT-4o case urgency scoring on inquiry — Criminal and Personal Injury flagged for same-day outreach automatically.<br/>2. Auto-generate a Notion case brief from intake form answers using GPT-4o, ready for the lawyer before the consultation.<br/>3. Post-consultation SMS follow-up sequence if no contract is signed within 72 hours — re-engagement without manual effort.</p>
+                </div>
+                <div class="abest">
+                  <p class="abest-title">Best For</p>
+                  <div class="abest-row"><span class="abest-dot abest-sm"></span><span class="abest-size">Small Firm</span><span class="abest-desc">Inquiry capture + intake + booking link + Airtable tracking</span></div>
+                  <div class="abest-row"><span class="abest-dot abest-md"></span><span class="abest-size">Mid-Size Firm</span><span class="abest-desc">Full 5-stage lifecycle, Notion case files, contract automation, pipeline visibility</span></div>
+                  <div class="abest-row"><span class="abest-dot abest-lg"></span><span class="abest-size">Large Firm</span><span class="abest-desc">Multi-practice routing, GPT case briefs, territory assignment, analytics dashboard</span></div>
+                </div>
+                <div class="avideo-label-row">
+                  <span class="avideo-chip">▶ Live Demo</span>
+                  <span class="avideo-sub">Watch the full client lifecycle run end-to-end</span>
+                </div>
+                <div class="aiframe-box">
+                  <iframe src="https://www.youtube.com/embed/tL-sEmhRd14" title="Lawyer Full Client Lifecycle Demo" frameborder="0" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /acard-row duubu-lawyer -->
+
+          <div class="work-auto-sep"></div>
+
+          <!-- ROW 2: New Hire Onboarding + Doctor Appointment -->
+          <div class="acard-row">
+
+            <!-- New Hire Onboarding Automation -->
+            <div class="acard">
+              <div class="acard-diagram">
+                <div class="adiag-bar">
+                  <span class="adiag-label">⬡ WORKFLOW DIAGRAM</span>
+                  <div class="adiag-controls">
+                    <button class="azoom" data-d="in">+</button>
+                    <button class="azoom" data-d="out">−</button>
+                    <button class="azoom" data-d="reset">⟳</button>
+                  </div>
+                </div>
+                <div class="adiag-vp">
+                  <div class="adiag-canvas" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;padding:20px;">
+                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;">
+                      <span style="background:#7c3aed;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">GHL</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#e8450a;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">Make.com</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#f8a100;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">Notion</span>
+                      <span style="color:#11cfff;font-weight:700;">/</span>
+                      <span style="background:#18bfff;color:#0a0a0f;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">Airtable</span>
+                      <span style="color:#11cfff;font-weight:700;">/</span>
+                      <span style="background:#4b5563;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">Homebase</span>
+                    </div>
+                    <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;width:100%;max-width:320px;">
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">① New hire fills GHL form → Name, Email, Phone, Start Date</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">② GHL fires webhook → contact created, data sent to Make.com</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">③ Make.com routes data → Notion checklist + Airtable record created</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">④ Homebase receives hire → scheduling invite sent to employee</div>
+                    </div>
+                  </div>
+                  <span class="adiag-hint">Scroll to zoom · Drag to pan</span>
+                </div>
+              </div>
+              <div class="acard-info">
+                <div class="acard-icon-row">
+                  <span class="acard-icon">🏢</span>
+                  <div>
+                    <h3 class="acard-title">New Hire Onboarding Automation</h3>
+                    <div class="acard-chips">
+                      <span class="achip">GHL</span><span class="achip">Make.com</span>
+                      <span class="achip">Notion</span><span class="achip">Airtable</span><span class="achip">Homebase</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="acard-desc">A full stack automation that onboards a new employee across four tools automatically — triggered by a single GHL form submission. One form creates a Notion checklist, an Airtable record, and a Homebase scheduling invite simultaneously. Zero manual work after setup.</p>
+                <div class="asteps">
+                  <div class="astep"><span class="astep-n">01</span><span class="astep-t">New hire fills GHL form → Name, Email, Phone, Start Date captured</span></div>
+                  <div class="astep"><span class="astep-n">02</span><span class="astep-t">GHL workflow fires → contact created and webhook sent to Make.com</span></div>
+                  <div class="astep"><span class="astep-n">03</span><span class="astep-t">Make.com receives data → acts as middleware, formats for each platform</span></div>
+                  <div class="astep"><span class="astep-n">04</span><span class="astep-t">Notion creates onboarding checklist page → auto-generated from template</span></div>
+                  <div class="astep"><span class="astep-n">05</span><span class="astep-t">Airtable creates employee record → status set to Not Started</span></div>
+                  <div class="astep"><span class="astep-n">06</span><span class="astep-t">Homebase adds employee → scheduling invite sent automatically</span></div>
+                </div>
+                <div class="aupgrade">
+                  <p class="aupgrade-title">⚡ Possible Upgrades</p>
+                  <p class="aupgrade-text">1. Welcome SMS via GHL the moment the form is submitted — personal touch before day one.<br/>2. Auto-assign department-specific Notion checklist templates based on the role field.<br/>3. Slack notification to the hiring manager when a new hire submits — zero lag on their end.</p>
+                </div>
+                <div class="abest">
+                  <p class="abest-title">Best For</p>
+                  <div class="abest-row"><span class="abest-dot abest-sm"></span><span class="abest-size">Small Business</span><span class="abest-desc">GHL form + Notion checklist + Airtable record — all automatic</span></div>
+                  <div class="abest-row"><span class="abest-dot abest-md"></span><span class="abest-size">Growing Team</span><span class="abest-desc">Multi-department checklists, Homebase scheduling, manager notifications</span></div>
+                  <div class="abest-row"><span class="abest-dot abest-lg"></span><span class="abest-size">Enterprise</span><span class="abest-desc">ATS integration, multi-location routing, automated onboarding packets at scale</span></div>
+                </div>
+                <div class="avideo-label-row">
+                  <span class="avideo-chip">▶ Live Demo</span>
+                  <span class="avideo-sub">Watch the full onboarding flow end-to-end</span>
+                </div>
+                <div class="aiframe-box">
+                  <iframe src="https://www.youtube.com/embed/zIdgVCFzhrE" title="New Hire Onboarding Automation Demo" frameborder="0" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+
+            <!-- Doctor Appointment Automation -->
+            <div class="acard">
+              <div class="acard-diagram">
+                <div class="adiag-bar">
+                  <span class="adiag-label">⬡ WORKFLOW DIAGRAM</span>
+                  <div class="adiag-controls">
+                    <button class="azoom" data-d="in">+</button>
+                    <button class="azoom" data-d="out">−</button>
+                    <button class="azoom" data-d="reset">⟳</button>
+                  </div>
+                </div>
+                <div class="adiag-vp">
+                  <div class="adiag-canvas" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;padding:20px;">
+                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;">
+                      <span style="background:#7c3aed;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">GHL Form</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#7c3aed;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">GHL Workflow</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#7c3aed;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">Calendar + Emails</span>
+                    </div>
+                    <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;width:100%;max-width:320px;">
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">① Patient submits form → tagged as doctor-lead instantly</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">② Confirmation email sent with personalized first name</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">③ Appointment auto-booked in clinic calendar</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">④ 1 day before → reminder email sent to reduce no-shows</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">⑤ 1 day after → Google review request sent automatically</div>
+                    </div>
+                  </div>
+                  <span class="adiag-hint">Scroll to zoom · Drag to pan</span>
+                </div>
+              </div>
+              <div class="acard-info">
+                <div class="acard-icon-row">
+                  <span class="acard-icon">🏥</span>
+                  <div>
+                    <h3 class="acard-title">Doctor Appointment Automation</h3>
+                    <div class="acard-chips">
+                      <span class="achip">GHL</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="acard-desc">A complete patient booking automation built entirely inside GHL — no external tools needed. From the moment a patient submits the form, the workflow tags them, sends a personalized confirmation, auto-books the appointment, fires a reminder the day before, and requests a Google review the day after. Fully hands-off once published.</p>
+                <div class="asteps">
+                  <div class="astep"><span class="astep-n">01</span><span class="astep-t">Patient submits form → tagged as doctor-lead instantly</span></div>
+                  <div class="astep"><span class="astep-n">02</span><span class="astep-t">Confirmation email sent with personalized first name</span></div>
+                  <div class="astep"><span class="astep-n">03</span><span class="astep-t">Appointment auto-booked in Meridian Health Clinic calendar</span></div>
+                  <div class="astep"><span class="astep-n">04</span><span class="astep-t">1 day before → reminder email sent to reduce no-shows</span></div>
+                  <div class="astep"><span class="astep-n">05</span><span class="astep-t">1 day after → Google review request sent automatically</span></div>
+                </div>
+                <div class="aupgrade">
+                  <p class="aupgrade-title">⚡ Possible Upgrades</p>
+                  <p class="aupgrade-text">1. Add appointment status check — only send review request if status = Completed, skipping no-shows entirely.<br/>2. SMS confirmation and reminder once a GHL phone number is activated — faster and higher open rates than email.<br/>3. Re-booking sequence — if patient doesn't return within 30 days, send an automated follow-up nudge.</p>
+                </div>
+                <div class="abest">
+                  <p class="abest-title">Best For</p>
+                  <div class="abest-row"><span class="abest-dot abest-sm"></span><span class="abest-size">Small Clinic</span><span class="abest-desc">Booking form + confirmation + auto-appointment + reminder + review</span></div>
+                  <div class="abest-row"><span class="abest-dot abest-md"></span><span class="abest-size">Multi-Doctor Practice</span><span class="abest-desc">Per-doctor calendar routing, team notifications, no-show follow-up sequences</span></div>
+                  <div class="abest-row"><span class="abest-dot abest-lg"></span><span class="abest-size">Health Network</span><span class="abest-desc">Multi-location routing, EHR integration, reputation management at scale</span></div>
+                </div>
+                <div class="avideo-label-row">
+                  <span class="avideo-chip">▶ Live Demo</span>
+                  <span class="avideo-sub">Watch the full patient flow end-to-end</span>
+                </div>
+                <div class="aiframe-box">
+                  <iframe src="https://www.youtube.com/embed/UFtK0_SRTqk" title="Doctor Appointment Automation Demo" frameborder="0" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /acard-row onboarding-doctor -->
+
+          <div class="work-auto-sep"></div>
+
+          <!-- ROW 3: IT Consultancy + Yuki QualiLead -->
+          <div class="acard-row">
+
+            <!-- IT Consultancy Automation -->
+            <div class="acard">
             <div class="acard-diagram">
               <div class="adiag-bar">
                 <span class="adiag-label">⬡ WORKFLOW DIAGRAM</span>
@@ -184,12 +491,9 @@
                 <iframe src="https://www.youtube.com/embed/-rnDWWohWWA" title="IT Consultancy Demo" frameborder="0" allowfullscreen></iframe>
               </div>
             </div>
-          </div>
+            </div>
 
-          <!-- CARDS 2 & 3: side by side -->
-          <div class="acard-row">
-
-            <!-- CARD 2: QualiLead -->
+            <!-- Yuki QualiLead Generation -->
             <div class="acard">
               <div class="acard-diagram">
                 <div class="adiag-bar">
@@ -219,6 +523,13 @@
                   </div>
                 </div>
                 <p class="acard-desc">When a prospect fills out a form on the client's Systeme.io funnel, an n8n webhook instantly passes the submission to GPT-4o Mini for quality scoring. The AI evaluates intent signals, form responses, and lead fit — routing Hot leads to an immediate client notification while Warm leads enter a structured follow-up sequence. Every interaction is tracked in HubSpot, giving the client a live view of their pipeline at all times.</p>
+                <div class="asteps">
+                  <div class="astep"><span class="astep-n">01</span><span class="astep-t">Prospect fills Systeme.io form → n8n webhook fires instantly</span></div>
+                  <div class="astep"><span class="astep-n">02</span><span class="astep-t">n8n passes data to GPT-4o Mini → lead scored in real time</span></div>
+                  <div class="astep"><span class="astep-n">03</span><span class="astep-t">GPT-4o Mini returns Hot, Warm, or Cold → score tag applied</span></div>
+                  <div class="astep"><span class="astep-n">04</span><span class="astep-t">Hot lead → immediate client notification sent</span></div>
+                  <div class="astep"><span class="astep-n">05</span><span class="astep-t">Warm lead → structured follow-up sequence enrolled in HubSpot</span></div>
+                </div>
                 <div class="aupgrade">
                   <p class="aupgrade-title">⚡ Possible Upgrades</p>
                   <p class="aupgrade-text">1. Real-time Slack or SMS alerts when a Hot lead comes in — includes lead details and a one-click link to their HubSpot record.<br/>2. A VA-facing HubSpot dashboard showing pipeline status, score distribution, and sequence conversion rates.<br/>3. A/B sequence testing — two follow-up tracks run in parallel to find which converts Warm leads better.</p>
@@ -231,6 +542,7 @@
                 </div>
                 <div class="avideo-label-row">
                   <span class="avideo-chip">▶ Live Demo</span>
+                  <span class="avideo-sub">Watch the full lead scoring and routing flow</span>
                 </div>
                 <div class="aiframe-box">
                   <iframe src="https://www.youtube.com/embed/kqcgvCoBgrI" title="QualiLead Demo" frameborder="0" allowfullscreen></iframe>
@@ -238,7 +550,14 @@
               </div>
             </div>
 
-            <!-- CARD 3: Recruitment -->
+          </div><!-- /acard-row it-qualilead -->
+
+          <div class="work-auto-sep"></div>
+
+          <!-- ROW 4: Enterprise AI Recruitment -->
+          <div class="acard-row">
+
+            <!-- Enterprise AI Recruitment -->
             <div class="acard">
               <div class="acard-diagram">
                 <div class="adiag-bar">
@@ -268,6 +587,14 @@
                   </div>
                 </div>
                 <p class="acard-desc">When a candidate submits their application via Google Forms, GPT-4o Mini immediately evaluates their qualifications against the role's requirements — scoring fit across experience, skills, and availability. Qualified applicants receive an automated congratulations email and trigger an HR team notification. Unqualified applicants receive a warm, on-brand rejection that protects candidate experience. Edge cases are flagged for manual HR review, so no strong candidate slips through.</p>
+                <div class="asteps">
+                  <div class="astep"><span class="astep-n">01</span><span class="astep-t">Candidate submits application via Google Forms</span></div>
+                  <div class="astep"><span class="astep-n">02</span><span class="astep-t">Zapier webhook passes form data to GPT-4o Mini instantly</span></div>
+                  <div class="astep"><span class="astep-n">03</span><span class="astep-t">GPT-4o Mini scores fit → Qualified, Borderline, or Unqualified</span></div>
+                  <div class="astep"><span class="astep-n">04</span><span class="astep-t">Qualified → congratulations email + HR team notification sent</span></div>
+                  <div class="astep"><span class="astep-n">05</span><span class="astep-t">Unqualified → warm on-brand rejection email sent automatically</span></div>
+                  <div class="astep"><span class="astep-n">06</span><span class="astep-t">Borderline → flagged for manual HR review, no candidate slips through</span></div>
+                </div>
                 <div class="aupgrade">
                   <p class="aupgrade-title">⚡ Possible Upgrades</p>
                   <p class="aupgrade-text">1. Auto-send a Calendly scheduling link to top-tier candidates immediately after the congratulations email.<br/>2. Instant Slack notification to the hiring manager when an A-tier applicant is detected, including a GPT-generated qualification summary.<br/>3. A 30-day re-engagement drip for borderline candidates — held in a pool and contacted when a relevant new opening is posted.</p>
@@ -280,6 +607,7 @@
                 </div>
                 <div class="avideo-label-row">
                   <span class="avideo-chip">▶ Live Demo</span>
+                  <span class="avideo-sub">Watch the full candidate screening flow</span>
                 </div>
                 <div class="aiframe-box">
                   <iframe src="https://www.youtube.com/embed/ZEtw6j_BTjM" title="AI Recruitment Demo" frameborder="0" allowfullscreen></iframe>
@@ -288,6 +616,9 @@
             </div>
 
           </div><!-- /acard-row -->
+
+
+
 
 
         </div><!-- /auto-wrap -->
