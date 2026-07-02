@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Your 60-Min Strategy Call</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary:      #FF6B35;
+      --primary-dark: #e85a22;
+      --dark:         #0F172A;
+      --dark-2:       #1E293B;
+      --muted:        #64748B;
+      --white:        #ffffff;
+      --border:       #E2E8F0;
+      --shadow-lg:    0 16px 52px rgba(0,0,0,0.18);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark-2) 100%);
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    .page-bg { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .orb {
+      position: absolute; border-radius: 50%;
+      filter: blur(90px);
+      animation: orbDrift 14s ease-in-out infinite alternate;
+    }
+    .orb1 {
+      width: 520px; height: 520px;
+      background: radial-gradient(circle, rgba(255,107,53,0.45), transparent);
+      top: -200px; right: -120px;
+    }
+    .orb2 {
+      width: 420px; height: 420px;
+      background: radial-gradient(circle, rgba(59,130,246,0.35), transparent);
+      bottom: -100px; left: -80px; animation-delay: -5s;
+    }
+    @keyframes orbDrift {
+      0%   { transform: translate(0,0) scale(1); }
+      100% { transform: translate(50px,35px) scale(1.18); }
+    }
+
+    main {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      padding: 60px 24px;
+      position: relative; z-index: 1;
+    }
+
+    .form-wrapper {
+      width: 100%; max-width: 520px;
+      background: var(--white);
+      border-radius: 20px;
+      padding: 52px 48px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .form-header { text-align: center; margin-bottom: 36px; }
+
+    .form-badge {
+      display: inline-block;
+      background: rgba(255,107,53,0.1);
+      color: var(--primary);
+      border: 1px solid rgba(255,107,53,0.25);
+      border-radius: 100px; padding: 5px 14px;
+      font-size: 0.8rem; font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .form-header h1 {
+      font-size: 1.85rem; font-weight: 800;
+      letter-spacing: -0.5px; margin-bottom: 10px;
+      color: var(--dark);
+    }
+    .form-header p { color: var(--muted); font-size: 0.93rem; line-height: 1.5; }
+
+    /* GHL Form iframe wrapper */
+    .ghl-form-wrap {
+      width: 100%;
+    }
+
+    .ghl-form-wrap iframe {
+      width: 100%;
+      border: none;
+      min-height: 420px;
+      display: block;
+    }
+
+    .form-note {
+      text-align: center;
+      font-size: 0.79rem;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    footer {
+      background: var(--dark); color: #64748B;
+      padding: 24px; text-align: center;
+      font-size: 0.82rem;
+      position: relative; z-index: 1;
+    }
+
+    /* Top bar: back button + notice combined */
+    .top-bar {
+      position: relative; z-index: 10;
+      display: flex; align-items: center; gap: 16px;
+      background: rgba(255,107,53,0.07);
+      border-bottom: 1px solid rgba(255,107,53,0.18);
+      padding: 10px 20px;
+    }
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: rgba(15,23,42,0.6);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #CBD5E1;
+      font-size: 0.78rem; font-weight: 600;
+      padding: 6px 12px; border-radius: 7px;
+      text-decoration: none; white-space: nowrap;
+      transition: color 0.2s, border-color 0.2s;
+      flex-shrink: 0;
+    }
+    .back-btn:hover { color: #FF6B35; border-color: rgba(255,107,53,0.45); }
+    .notice-text {
+      color: #94A3B8; font-size: 0.77rem; line-height: 1.55;
+    }
+    .notice-text strong { color: #FF6B35; }
+    .notice-text a { color: #FF6B35; text-decoration: none; font-weight: 600; }
+    .notice-text a:hover { text-decoration: underline; }
+
+    @media (max-width: 560px) {
+      .form-wrapper { padding: 36px 24px; }
+      .form-header h1 { font-size: 1.5rem; }
+      .top-bar { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .notice-text { font-size: 0.73rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="../index.html" class="back-btn">← Portfolio</a>
+    <p class="notice-text">
+      <strong>Trial Ended</strong> — The automation on this form is currently inactive.
+      See how it works: <a href="../index.html">portfolio</a> → Work tab → <em>Yuki Strategy Call Sales Funnel</em>.
+    </p>
+  </div>
+
+  <div class="page-bg">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+  </div>
+
+  <main>
+    <div class="form-wrapper">
+      <div class="form-header">
+        <span class="form-badge">Limited Spots Available</span>
+        <h1>Book Your 60-Min Strategy Call</h1>
+        <p>Enter your details and we'll send you an exclusive discount</p>
+      </div>
+
+      <!-- GHL EMBED: YukiStrategyCall_OptinForm -->
+      <div class="ghl-form-wrap">
+        <iframe
+          src="https://api.leadconnectorhq.com/widget/form/WvRNtWRHktM7UkZSDE1Y"
+          style="width:100%;height:100%;border:none;border-radius:8px"
+          id="inline-WvRNtWRHktM7UkZSDE1Y"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="YukiStrategyCall_OptinForm"
+          data-height="437"
+          data-layout-iframe-id="inline-WvRNtWRHktM7UkZSDE1Y"
+          data-form-id="WvRNtWRHktM7UkZSDE1Y"
+          title="YukiStrategyCall_OptinForm">
+        </iframe>
+      </div>
+      <!-- END GHL EMBED -->
+
+      <p class="form-note">Your information is safe. No spam, ever.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Duubu LM &nbsp;&middot;&nbsp; duubu-lm.github.io</p>
+  </footer>
+
+  <!-- GHL Form Script -->
+  <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+
+</body>
+</html>

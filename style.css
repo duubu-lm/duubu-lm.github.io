@@ -579,12 +579,14 @@ nav {
 }
 
 /* ===========================================
-   WORK PAGE — scrollable (projects + automations)
+   WORK + AUTOMATIONS PAGES — scrollable
    =========================================== */
-#page-work {
+#page-work,
+#page-automations {
   display: none !important;
 }
-#page-work.active {
+#page-work.active,
+#page-automations.active {
   display: block !important;
   overflow-y: auto;
   overflow-x: hidden;
@@ -595,8 +597,10 @@ nav {
   scrollbar-width: thin;
   scrollbar-color: rgba(17,207,255,0.2) transparent;
 }
-#page-work::-webkit-scrollbar { width: 4px; }
-#page-work::-webkit-scrollbar-thumb {
+#page-work::-webkit-scrollbar,
+#page-automations::-webkit-scrollbar { width: 4px; }
+#page-work::-webkit-scrollbar-thumb,
+#page-automations::-webkit-scrollbar-thumb {
   background: rgba(17,207,255,0.22);
   border-radius: 999px;
 }
@@ -776,6 +780,32 @@ nav {
   border-radius: 12px;
   box-shadow: 0 0 80px rgba(0,0,0,0.9), 0 0 0 1px rgba(17,207,255,0.12);
   cursor: default;
+}
+
+#adiag-lb-html {
+  display: none;
+  width: min(680px, 92vw);
+  max-height: 82vh;
+  overflow-y: auto;
+  border-radius: 16px;
+  background: #0d1525;
+  border: 1px solid rgba(17,207,255,0.12);
+  box-shadow: 0 0 80px rgba(0,0,0,0.9);
+  padding: 28px 24px;
+  cursor: default;
+  color: #c8d0e8;
+  font-family: inherit;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Scale up the pill badges and step rows inside the lightbox */
+#adiag-lb-html .adiag-canvas > div span[style] {
+  font-size: 0.85rem !important;
+  padding: 8px 18px !important;
+}
+#adiag-lb-html .adiag-canvas > div > div {
+  font-size: 0.78rem !important;
+  padding: 9px 14px !important;
 }
 
 #adiag-lb-close {
@@ -1042,7 +1072,8 @@ nav {
   #page-hero {
     padding-top: 66px;
   }
-  #page-work.active {
+  #page-work.active,
+  #page-automations.active {
     padding-top: 66px;
   }
   #page-hero .hero-content {
@@ -1064,7 +1095,8 @@ nav {
     padding: 0.78rem 1.4rem;
     font-size: 0.9rem;
   }
-  #page-work .section-title {
+  #page-work .section-title,
+  #page-automations .section-title {
     font-size: 1.75rem;
   }
 }
@@ -1130,4 +1162,108 @@ nav {
     max-width: 260px;
     text-align: center;
   }
+}
+
+/* ── Workflow Filter Bar ─────────────────────────────────── */
+.afilter-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.afilter-btn {
+  background: rgba(17,207,255,0.05);
+  border: 1px solid rgba(17,207,255,0.13);
+  color: #7f8aa8;
+  font-size: 0.73rem;
+  font-weight: 600;
+  padding: 7px 16px;
+  border-radius: 100px;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.03em;
+  transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.15s;
+  white-space: nowrap;
+}
+.afilter-btn:hover {
+  background: rgba(17,207,255,0.1);
+  border-color: rgba(17,207,255,0.3);
+  color: #c8d0e8;
+  transform: translateY(-1px);
+}
+.afilter-btn.active {
+  background: rgba(17,207,255,0.14);
+  border-color: rgba(17,207,255,0.5);
+  color: #11cfff;
+}
+.afilter-sep {
+  width: 1px;
+  height: 20px;
+  background: rgba(17,207,255,0.12);
+  flex-shrink: 0;
+  align-self: center;
+}
+.afilter-hidden {
+  display: none !important;
+}
+@media (max-width: 600px) {
+  .afilter-bar { gap: 6px; }
+  .afilter-sep { display: none; }
+  .afilter-btn { font-size: 0.68rem; padding: 6px 12px; }
+}
+
+/* Flat grid — always active, cards auto-pair */
+#acard-grid-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+#acard-grid-wrap .acard-row {
+  display: contents;
+}
+#acard-grid-wrap .work-auto-sep {
+  display: none;
+}
+@media (max-width: 900px) {
+  #acard-grid-wrap { grid-template-columns: 1fr; }
+}
+
+/* ── Trial Notice Banner ─────────────────────────────────── */
+.trial-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: rgba(255, 107, 53, 0.07);
+  border: 1px solid rgba(255, 107, 53, 0.2);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 24px;
+}
+.trial-badge {
+  display: inline-block;
+  background: rgba(255, 107, 53, 0.15);
+  color: #FF6B35;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+.trial-notice p {
+  color: #94A3B8;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  margin: 0;
+}
+.trial-notice p strong {
+  color: #FF6B35;
+  font-weight: 600;
+}
+@media (max-width: 500px) {
+  .trial-notice { flex-direction: column; gap: 8px; }
 }

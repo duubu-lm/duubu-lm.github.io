@@ -14,7 +14,8 @@
     <a href="#" class="nav-logo" id="homeLogo" aria-label="Go to home page">✦ Duubu LM</a>
 
     <ul class="nav-links" id="navLinks">
-      <li><a href="#" data-section="work" data-transition="warp">Work</a></li>
+      <li><a href="#" data-section="work" data-transition="warp">Projects</a></li>
+      <li><a href="#" data-section="automations" data-transition="warp">Automations</a></li>
       <li><a href="#" data-section="case-studies" data-transition="wormhole">Case Studies</a></li>
       <li><a href="#" data-section="about" data-transition="drift">About</a></li>
       <li><a href="#" data-section="contact" data-transition="pulse">Contact</a></li>
@@ -49,6 +50,11 @@
           <p class="section-label">Work Samples</p>
           <h2 class="section-title">What I've Built</h2>
           <div class="section-divider"></div>
+
+          <div class="trial-notice">
+            <span class="trial-badge">Display Only</span>
+            <p><strong>Trial Ended</strong> — Most of these websites ran on a GHL trial. Forms and automations are currently inactive. They're here to showcase the live design and flow. To see how the automations work, visit the <strong>Automations</strong> tab.</p>
+          </div>
 
         <div class="grid-3">
           <div class="card">
@@ -122,19 +128,434 @@
             <span class="card-tag">GHL · Make.com · Notion · Airtable</span><br />
             <a href="Onboarding/index.html" class="card-link">View Project →</a>
           </div>
+
+          <div class="card">
+            <div class="card-icon">📅</div>
+            <h3>Yuki Strategy Call Funnel</h3>
+            <p>
+              A complete GHL sales funnel for a coaching brand — optin page captures leads,
+              behavioral email automation delivers a $100 discount coupon with trigger link
+              tracking, and a purchase workflow onboards buyers instantly with pipeline and
+              tag logic.
+            </p>
+            <span class="card-tag">GHL · Sales Funnel · Email Automation</span><br />
+            <a href="YukiStrategyCall/index.html" class="card-link">View Project →</a>
+          </div>
         </div>
 
-          <!-- AI Automations Subsection -->
-          <div class="work-auto-sep"></div>
+        </div><!-- /auto-wrap -->
+      </div><!-- /auto-scroll-root -->
+    </div><!-- /page-work -->
+
+    <!-- AUTOMATIONS -->
+    <div class="page" id="page-automations">
+      <div class="auto-scroll-root">
+        <div class="auto-wrap">
+
           <p class="section-label">AI Automations</p>
           <h2 class="section-title">Workflows I've Built</h2>
           <div class="section-divider"></div>
+
+          <div class="afilter-bar">
+            <button class="afilter-btn active" data-tag="all">All</button>
+            <div class="afilter-sep"></div>
+            <button class="afilter-btn" data-tag="ghl">GHL</button>
+            <button class="afilter-btn" data-tag="n8n">n8n</button>
+            <button class="afilter-btn" data-tag="zapier">Zapier</button>
+            <button class="afilter-btn" data-tag="make">Make</button>
+            <button class="afilter-btn" data-tag="openclaw">OpenClaw</button>
+            <div class="afilter-sep"></div>
+            <button class="afilter-btn" data-tag="notion">Notion</button>
+            <button class="afilter-btn" data-tag="airtable">Airtable</button>
+            <button class="afilter-btn" data-tag="hubspot">HubSpot</button>
+          </div>
+
+          <div id="acard-grid-wrap">
+
+          <!-- NEW ROW A: Email Triage AI Agent + OpenClaw Daily Ops Agent -->
+          <div class="acard-row">
+
+            <!-- Email Triage AI Agent -->
+            <div class="acard" data-tags="n8n airtable">
+              <div class="acard-diagram">
+                <div class="adiag-bar">
+                  <span class="adiag-label">⬡ WORKFLOW DIAGRAM</span>
+                  <div class="adiag-controls">
+                    <button class="azoom" data-d="in">+</button>
+                    <button class="azoom" data-d="out">−</button>
+                    <button class="azoom" data-d="reset">⟳</button>
+                  </div>
+                </div>
+                <div class="adiag-vp">
+                  <div class="adiag-canvas" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;padding:20px;">
+                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;">
+                      <span style="background:#EA4B35;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">n8n</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#EA4335;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">Gmail</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#10a37f;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">OpenAI</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#18bfff;color:#0a0a0f;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">Airtable</span>
+                    </div>
+                    <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;width:100%;max-width:320px;">
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">① New email triggers in Gmail — n8n polls the inbox in real time</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">② AI Agent reads and classifies — Urgent / Needs Reply / FYI / Spam</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">③ Gmail label applied + reply drafted and saved as Gmail draft</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">④ Airtable logs sender, subject, category, priority score, and draft reply</div>
+                    </div>
+                  </div>
+                  <span class="adiag-hint">Click to expand</span>
+                </div>
+              </div>
+              <div class="acard-info">
+                <div class="acard-icon-row">
+                  <span class="acard-icon">📧</span>
+                  <div>
+                    <h3 class="acard-title">Email Triage AI Agent</h3>
+                    <div class="acard-chips">
+                      <span class="achip">n8n</span><span class="achip">Gmail</span>
+                      <span class="achip">OpenAI</span><span class="achip">Airtable</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="acard-desc">An AI agent that reads every incoming email, classifies it by urgency and intent, and drafts a reply — before you've even opened your inbox. Runs on n8n, connected directly to Gmail.</p>
+                <div class="asteps">
+                  <div class="astep"><span class="astep-n">01</span><span class="astep-t">New email arrives — Gmail trigger polls the inbox in real time</span></div>
+                  <div class="astep"><span class="astep-n">02</span><span class="astep-t">AI Agent reads the email — classifies as Urgent / Needs Reply / FYI / Spam</span></div>
+                  <div class="astep"><span class="astep-n">03</span><span class="astep-t">Structured Output Parser — forces a consistent JSON response every time</span></div>
+                  <div class="astep"><span class="astep-n">04</span><span class="astep-t">Gmail label applied — AI-Urgent, AI-Needs-Reply, etc. added automatically</span></div>
+                  <div class="astep"><span class="astep-n">05</span><span class="astep-t">Reply drafted — saved directly as a Gmail draft, never auto-sent</span></div>
+                  <div class="astep"><span class="astep-n">06</span><span class="astep-t">Airtable logs the result — sender, subject, category, priority score, and draft reply</span></div>
+                </div>
+                <div class="aupgrade">
+                  <p class="aupgrade-title">⚡ Possible Upgrades</p>
+                  <p class="aupgrade-text">1. Auto-escalate anything tagged Urgent straight to Slack or Telegram.<br/>2. Weekly digest email summarizing every triaged conversation.<br/>3. Sentiment scoring to flag frustrated clients before they churn.</p>
+                </div>
+                <div class="abest">
+                  <p class="abest-title">Best For</p>
+                  <div class="abest-row"><span class="abest-dot abest-sm"></span><span class="abest-size">Small Business</span><span class="abest-desc">One inbox, one owner drowning in email — this clears the noise in minutes, not hours.</span></div>
+                  <div class="abest-row"><span class="abest-dot abest-md"></span><span class="abest-size">Growing Team</span><span class="abest-desc">Shared inboxes where nothing should slip through without a label and a draft ready to go.</span></div>
+                  <div class="abest-row"><span class="abest-dot abest-lg"></span><span class="abest-size">Enterprise</span><span class="abest-desc">Multi-department triage with custom routing rules per team, feeding into existing ticketing systems.</span></div>
+                </div>
+                <div class="avideo-label-row">
+                  <span class="avideo-chip">▶ Live Demo</span>
+                  <span class="avideo-sub">Watch the full email triage flow in action</span>
+                </div>
+                <div class="aiframe-box">
+                  <iframe src="https://www.youtube.com/embed/PLACEHOLDER" title="Email Triage AI Agent Demo" frameborder="0" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+
+            <!-- OpenClaw Daily Ops Agent -->
+            <div class="acard" data-tags="openclaw">
+              <div class="acard-diagram">
+                <div class="adiag-bar">
+                  <span class="adiag-label">⬡ WORKFLOW DIAGRAM</span>
+                  <div class="adiag-controls">
+                    <button class="azoom" data-d="in">+</button>
+                    <button class="azoom" data-d="out">−</button>
+                    <button class="azoom" data-d="reset">⟳</button>
+                  </div>
+                </div>
+                <div class="adiag-vp">
+                  <div class="adiag-canvas" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;padding:20px;">
+                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;">
+                      <span style="background:#D50C2D;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">Hetzner VPS</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#6366f1;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">OpenClaw</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#EA4335;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">Gmail / Cal</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#2CA5E0;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">Telegram</span>
+                    </div>
+                    <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;width:100%;max-width:320px;">
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">① Agent wakes at 6:00 AM — cron-triggered daily on dedicated VPS</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">② Pulls Gmail unread messages + Calendar events via gogcli</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">③ AI summarizes both into a clean plain-language daily briefing</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">④ Briefing delivered to Telegram — unattended, 24/7 on dedicated VPS</div>
+                    </div>
+                  </div>
+                  <span class="adiag-hint">Click to expand</span>
+                </div>
+              </div>
+              <div class="acard-info">
+                <div class="acard-icon-row">
+                  <span class="acard-icon">🤖</span>
+                  <div>
+                    <h3 class="acard-title">OpenClaw Daily Ops Agent</h3>
+                    <div class="acard-chips">
+                      <span class="achip">Hetzner VPS</span><span class="achip">OpenClaw</span>
+                      <span class="achip">Telegram</span><span class="achip">Gmail</span><span class="achip">Google Calendar</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="acard-desc">A persistent AI agent that lives on its own server, not a chatbot you have to remember to open. Connected to real Gmail and Calendar, it checks in every morning on its own and delivers a clean briefing straight to Telegram.</p>
+                <div class="asteps">
+                  <div class="astep"><span class="astep-n">01</span><span class="astep-t">Agent wakes on a schedule — cron-triggered every day at 6:00 AM, no human involved</span></div>
+                  <div class="astep"><span class="astep-n">02</span><span class="astep-t">Checks Gmail — pulls unread priority messages via gogcli</span></div>
+                  <div class="astep"><span class="astep-n">03</span><span class="astep-t">Checks Calendar — pulls today's events</span></div>
+                  <div class="astep"><span class="astep-n">04</span><span class="astep-t">Agent summarizes both — clean, plain-language briefing, no raw data dumped</span></div>
+                  <div class="astep"><span class="astep-n">05</span><span class="astep-t">Delivered via Telegram — lands directly in chat, ready before your coffee</span></div>
+                  <div class="astep"><span class="astep-n">06</span><span class="astep-t">Runs unattended 24/7 — hosted on a dedicated VPS, not your laptop</span></div>
+                </div>
+                <div class="aupgrade">
+                  <p class="aupgrade-title">⚡ Possible Upgrades</p>
+                  <p class="aupgrade-text">1. Connect a second channel (WhatsApp/Slack) for teams who don't use Telegram.<br/>2. Add a nightly wrap-up briefing alongside the morning one.<br/>3. Let the agent take real actions — reply to flagged emails, move a calendar slot — with owner approval built in.</p>
+                </div>
+                <div class="abest">
+                  <p class="abest-title">Best For</p>
+                  <div class="abest-row"><span class="abest-dot abest-sm"></span><span class="abest-size">Small Business</span><span class="abest-desc">One owner who wants a personal assistant that never forgets to check in.</span></div>
+                  <div class="abest-row"><span class="abest-dot abest-md"></span><span class="abest-size">Growing Team</span><span class="abest-desc">A shared ops inbox that needs a daily human-readable summary, not another dashboard.</span></div>
+                  <div class="abest-row"><span class="abest-dot abest-lg"></span><span class="abest-size">Enterprise</span><span class="abest-desc">A foundation for a full internal agent platform — this is the infrastructure layer other agents plug into.</span></div>
+                </div>
+                <div class="avideo-label-row">
+                  <span class="avideo-chip">▶ Live Demo</span>
+                  <span class="avideo-sub">Watch the agent wake up and deliver its morning briefing</span>
+                </div>
+                <div class="aiframe-box">
+                  <iframe src="https://www.youtube.com/embed/PLACEHOLDER" title="OpenClaw Daily Ops Agent Demo" frameborder="0" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /acard-row email-openclaw -->
+
+          <div class="work-auto-sep"></div>
+
+          <!-- NEW ROW B: VA Benefits Eligibility AI Agent + Review Watchdog -->
+          <div class="acard-row">
+
+            <!-- VA Benefits Eligibility AI Agent -->
+            <div class="acard" data-tags="n8n airtable">
+              <div class="acard-diagram">
+                <div class="adiag-bar">
+                  <span class="adiag-label">⬡ WORKFLOW DIAGRAM</span>
+                  <div class="adiag-controls">
+                    <button class="azoom" data-d="in">+</button>
+                    <button class="azoom" data-d="out">−</button>
+                    <button class="azoom" data-d="reset">⟳</button>
+                  </div>
+                </div>
+                <div class="adiag-vp">
+                  <div class="adiag-canvas" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;padding:20px;">
+                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;">
+                      <span style="background:#34A853;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">Google Drive</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#EA4B35;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">n8n</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#10a37f;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">OpenAI</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#18bfff;color:#0a0a0f;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">Airtable</span>
+                    </div>
+                    <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;width:100%;max-width:320px;">
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">① Document uploaded to Google Drive — trigger polls every 15 minutes</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">② PDF text extracted — binary converted to readable plain text</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">③ AI reasons against 4 eligibility criteria — discharge, service, minimum service, docs</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">④ Result logged in Airtable + formal email sent with screening-only disclaimer</div>
+                    </div>
+                  </div>
+                  <span class="adiag-hint">Click to expand</span>
+                </div>
+              </div>
+              <div class="acard-info">
+                <div class="acard-icon-row">
+                  <span class="acard-icon">🪖</span>
+                  <div>
+                    <h3 class="acard-title">VA Benefits Eligibility AI Agent</h3>
+                    <div class="acard-chips">
+                      <span class="achip">Google Drive</span><span class="achip">n8n</span>
+                      <span class="achip">OpenAI</span><span class="achip">Airtable</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="acard-desc">A document AI agent that reads an uploaded discharge document, reasons against real VA eligibility criteria, and returns a clear likely-eligible or likely-not determination — with full reasoning, not just a verdict.</p>
+                <div class="asteps">
+                  <div class="astep"><span class="astep-n">01</span><span class="astep-t">Document uploaded to Google Drive — a veteran or caseworker drops a file into a shared folder</span></div>
+                  <div class="astep"><span class="astep-n">02</span><span class="astep-t">Drive trigger detects the new file — polls every 15 minutes</span></div>
+                  <div class="astep"><span class="astep-n">03</span><span class="astep-t">PDF text extracted — binary converted to readable plain text</span></div>
+                  <div class="astep"><span class="astep-n">04</span><span class="astep-t">AI Agent reasons against 4 criteria — discharge character, service connection, minimum service, documentation</span></div>
+                  <div class="astep"><span class="astep-n">05</span><span class="astep-t">Structured Output Parser — guarantees a consistent 7-field JSON result every time</span></div>
+                  <div class="astep"><span class="astep-n">06</span><span class="astep-t">Result logged + emailed — Airtable record created, formal email sent with a clear screening-only disclaimer</span></div>
+                </div>
+                <div class="aupgrade">
+                  <p class="aupgrade-title">⚡ Possible Upgrades</p>
+                  <p class="aupgrade-text">1. Replace the AI's self-reported confidence score with a rule-based point system for more defensible results.<br/>2. Add PII redaction before any document reaches the AI API.<br/>3. OCR support for scanned or handwritten documents.</p>
+                </div>
+                <div class="abest">
+                  <p class="abest-title">Best For</p>
+                  <div class="abest-row"><span class="abest-dot abest-sm"></span><span class="abest-size">Small Business</span><span class="abest-desc">A single caseworker who needs a fast first-pass read before a real review.</span></div>
+                  <div class="abest-row"><span class="abest-dot abest-md"></span><span class="abest-size">Growing Team</span><span class="abest-desc">A small VSO or advocacy office triaging a growing intake queue.</span></div>
+                  <div class="abest-row"><span class="abest-dot abest-lg"></span><span class="abest-size">Enterprise</span><span class="abest-desc">A screening layer in front of a full case management system, with audit-ready logging built in.</span></div>
+                </div>
+                <div class="avideo-label-row">
+                  <span class="avideo-chip">▶ Live Demo</span>
+                  <span class="avideo-sub">Watch the full eligibility screening flow end-to-end</span>
+                </div>
+                <div class="aiframe-box">
+                  <iframe src="https://www.youtube.com/embed/PLACEHOLDER" title="VA Benefits Eligibility AI Agent Demo" frameborder="0" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review Watchdog -->
+            <div class="acard" data-tags="n8n">
+              <div class="acard-diagram">
+                <div class="adiag-bar">
+                  <span class="adiag-label">⬡ WORKFLOW DIAGRAM</span>
+                  <div class="adiag-controls">
+                    <button class="azoom" data-d="in">+</button>
+                    <button class="azoom" data-d="out">−</button>
+                    <button class="azoom" data-d="reset">⟳</button>
+                  </div>
+                </div>
+                <div class="adiag-vp">
+                  <div class="adiag-canvas" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;padding:20px;">
+                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;">
+                      <span style="background:#4b5563;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">Webhook</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#EA4B35;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">n8n</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#10a37f;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">OpenAI</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#EA4335;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">Gmail</span>
+                    </div>
+                    <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;width:100%;max-width:320px;">
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">① New review received — webhook captures platform, rating, and text</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">② Classifier Agent reads it — extracts severity, root complaint, and tone</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">③ Rating check — 4-5 stars skipped, 1-3 stars move to reply drafting</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">④ Owner emailed — full review + context + suggested reply, nothing auto-posted</div>
+                    </div>
+                  </div>
+                  <span class="adiag-hint">Click to expand</span>
+                </div>
+              </div>
+              <div class="acard-info">
+                <div class="acard-icon-row">
+                  <span class="acard-icon">⭐</span>
+                  <div>
+                    <h3 class="acard-title">Review Watchdog</h3>
+                    <div class="acard-chips">
+                      <span class="achip">n8n</span><span class="achip">OpenAI</span><span class="achip">Gmail</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="acard-desc">A stateless workflow that reads every incoming review, quietly skips the good ones, and drafts a specific, empathetic reply for the bad ones — ready for owner approval, never auto-posted.</p>
+                <div class="asteps">
+                  <div class="astep"><span class="astep-n">01</span><span class="astep-t">New review received — webhook accepts platform, rating, and review text</span></div>
+                  <div class="astep"><span class="astep-n">02</span><span class="astep-t">Classifier Agent reads it — extracts severity, root complaint, and emotional tone</span></div>
+                  <div class="astep"><span class="astep-n">03</span><span class="astep-t">Rating check — 4-5 stars logged and skipped, 1-3 stars move forward</span></div>
+                  <div class="astep"><span class="astep-n">04</span><span class="astep-t">Response Drafter Agent writes a reply — references the specific complaint, never generic</span></div>
+                  <div class="astep"><span class="astep-n">05</span><span class="astep-t">Professional email sent to the owner — original review, extracted context, and suggested reply</span></div>
+                  <div class="astep"><span class="astep-n">06</span><span class="astep-t">Owner reviews and edits — nothing gets posted without a human glancing at it first</span></div>
+                </div>
+                <div class="aupgrade">
+                  <p class="aupgrade-title">⚡ Possible Upgrades</p>
+                  <p class="aupgrade-text">1. Connect a real Google Business Profile once the business has its own verified website.<br/>2. Add a weekly digest of every review handled, good and bad.<br/>3. Auto-flag repeat complaints from the same root cause for a manager to investigate.</p>
+                </div>
+                <div class="abest">
+                  <p class="abest-title">Best For</p>
+                  <div class="abest-row"><span class="abest-dot abest-sm"></span><span class="abest-size">Small Business</span><span class="abest-desc">An owner who dreads writing review replies — this removes the blank-page problem entirely.</span></div>
+                  <div class="abest-row"><span class="abest-dot abest-md"></span><span class="abest-size">Growing Team</span><span class="abest-desc">Multiple locations, each needing consistent, on-brand responses without a dedicated reputation manager.</span></div>
+                  <div class="abest-row"><span class="abest-dot abest-lg"></span><span class="abest-size">Enterprise</span><span class="abest-desc">A reputation-monitoring layer across every location, feeding a central compliance/quality dashboard.</span></div>
+                </div>
+                <div class="avideo-label-row">
+                  <span class="avideo-chip">▶ Live Demo</span>
+                  <span class="avideo-sub">Watch the review triage and draft reply flow</span>
+                </div>
+                <div class="aiframe-box">
+                  <iframe src="https://www.youtube.com/embed/PLACEHOLDER" title="Review Watchdog Demo" frameborder="0" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /acard-row va-review -->
+
+          <div class="work-auto-sep"></div>
+
+          <!-- NEW ROW C: Ask HQ Employee Query Router -->
+          <div class="acard-row">
+
+            <!-- Ask HQ - Employee Query Router -->
+            <div class="acard" data-tags="n8n">
+              <div class="acard-diagram">
+                <div class="adiag-bar">
+                  <span class="adiag-label">⬡ WORKFLOW DIAGRAM</span>
+                  <div class="adiag-controls">
+                    <button class="azoom" data-d="in">+</button>
+                    <button class="azoom" data-d="out">−</button>
+                    <button class="azoom" data-d="reset">⟳</button>
+                  </div>
+                </div>
+                <div class="adiag-vp">
+                  <div class="adiag-canvas" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;padding:20px;">
+                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;">
+                      <span style="background:#EA4B35;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">n8n</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#10a37f;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">OpenAI Router</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#f8a100;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">HR / IT / Finance</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#EA4335;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">Gmail</span>
+                    </div>
+                    <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;width:100%;max-width:320px;">
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">① Employee sends a question — one channel, any topic</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">② Router Agent classifies — HR, IT, Finance, or Compliance</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">③ HR/IT → AI answers from policy. Finance → rule-based check, zero AI</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">④ Compliance → escalates to human. Email delivered, color-coded per branch</div>
+                    </div>
+                  </div>
+                  <span class="adiag-hint">Click to expand</span>
+                </div>
+              </div>
+              <div class="acard-info">
+                <div class="acard-icon-row">
+                  <span class="acard-icon">💬</span>
+                  <div>
+                    <h3 class="acard-title">Ask HQ — Employee Query Router</h3>
+                    <div class="acard-chips">
+                      <span class="achip">n8n</span><span class="achip">OpenAI</span><span class="achip">Gmail</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="acard-desc">One inbox for any internal question — HR policy, IT trouble, expense approval, or compliance — automatically routed to the right specialist. AI is deliberately excluded from the two branches where a wrong answer would actually cause harm.</p>
+                <div class="asteps">
+                  <div class="astep"><span class="astep-n">01</span><span class="astep-t">Employee sends a question — one channel, any topic</span></div>
+                  <div class="astep"><span class="astep-n">02</span><span class="astep-t">Router Agent classifies it — HR, IT, Finance, or Compliance</span></div>
+                  <div class="astep"><span class="astep-n">03</span><span class="astep-t">HR/IT branches — AI Agent answers from real policy reference, never guesses</span></div>
+                  <div class="astep"><span class="astep-n">04</span><span class="astep-t">Finance branch — a plain threshold check, zero AI, one correct answer every time</span></div>
+                  <div class="astep"><span class="astep-n">05</span><span class="astep-t">Compliance branch — AI refuses to answer by design, escalates straight to a human</span></div>
+                  <div class="astep"><span class="astep-n">06</span><span class="astep-t">Professional email delivered — color-coded per branch, action-ready</span></div>
+                </div>
+                <div class="aupgrade">
+                  <p class="aupgrade-title">⚡ Possible Upgrades</p>
+                  <p class="aupgrade-text">1. Add a Slack/Teams version of the same router for teams that live in chat.<br/>2. Expand the HR policy reference into a real connected handbook instead of a static prompt.<br/>3. Add a lightweight approval log so the owner can see routing accuracy over time.</p>
+                </div>
+                <div class="abest">
+                  <p class="abest-title">Best For</p>
+                  <div class="abest-row"><span class="abest-dot abest-sm"></span><span class="abest-size">Small Business</span><span class="abest-desc">An owner tired of answering the same PTO and VPN questions every week.</span></div>
+                  <div class="abest-row"><span class="abest-dot abest-md"></span><span class="abest-size">Growing Team</span><span class="abest-desc">A 10–50 person team where questions are scattered across group chats and nothing gets tracked.</span></div>
+                  <div class="abest-row"><span class="abest-dot abest-lg"></span><span class="abest-size">Enterprise</span><span class="abest-desc">A pattern for department-specific routing at scale, with a hard rule that AI never touches legal or compliance risk.</span></div>
+                </div>
+                <div class="avideo-label-row">
+                  <span class="avideo-chip">▶ Live Demo</span>
+                  <span class="avideo-sub">Watch the query router handle all 4 department branches</span>
+                </div>
+                <div class="aiframe-box">
+                  <iframe src="https://www.youtube.com/embed/PLACEHOLDER" title="Ask HQ Employee Query Router Demo" frameborder="0" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /acard-row askhq -->
+
+          <div class="work-auto-sep"></div>
 
           <!-- ROW 1: Duubu Agency + Lawyer -->
           <div class="acard-row">
 
             <!-- Duubu Agency Lead Nurture + Chatbot -->
-            <div class="acard">
+            <div class="acard" data-tags="make ghl airtable">
               <div class="acard-diagram">
                 <div class="adiag-bar">
                   <span class="adiag-label">⬡ WORKFLOW DIAGRAM</span>
@@ -208,7 +629,7 @@
             </div>
 
             <!-- Lawyer Full Client Lifecycle -->
-            <div class="acard">
+            <div class="acard" data-tags="ghl make notion airtable">
               <div class="acard-diagram">
                 <div class="adiag-bar">
                   <span class="adiag-label">⬡ WORKFLOW DIAGRAM</span>
@@ -288,7 +709,7 @@
           <div class="acard-row">
 
             <!-- New Hire Onboarding Automation -->
-            <div class="acard">
+            <div class="acard" data-tags="ghl make notion airtable">
               <div class="acard-diagram">
                 <div class="adiag-bar">
                   <span class="adiag-label">⬡ WORKFLOW DIAGRAM</span>
@@ -362,7 +783,7 @@
             </div>
 
             <!-- Doctor Appointment Automation -->
-            <div class="acard">
+            <div class="acard" data-tags="ghl">
               <div class="acard-diagram">
                 <div class="adiag-bar">
                   <span class="adiag-label">⬡ WORKFLOW DIAGRAM</span>
@@ -438,7 +859,7 @@
           <div class="acard-row">
 
             <!-- IT Consultancy Automation -->
-            <div class="acard">
+            <div class="acard" data-tags="zapier hubspot">
             <div class="acard-diagram">
               <div class="adiag-bar">
                 <span class="adiag-label">⬡ WORKFLOW DIAGRAM</span>
@@ -494,7 +915,7 @@
             </div>
 
             <!-- Yuki QualiLead Generation -->
-            <div class="acard">
+            <div class="acard" data-tags="n8n hubspot">
               <div class="acard-diagram">
                 <div class="adiag-bar">
                   <span class="adiag-label">⬡ WORKFLOW DIAGRAM</span>
@@ -558,7 +979,7 @@
           <div class="acard-row">
 
             <!-- Enterprise AI Recruitment -->
-            <div class="acard">
+            <div class="acard" data-tags="zapier hubspot">
               <div class="acard-diagram">
                 <div class="adiag-bar">
                   <span class="adiag-label">⬡ WORKFLOW DIAGRAM</span>
@@ -615,7 +1036,82 @@
               </div>
             </div>
 
+            <!-- Yuki Strategy Call Sales Funnel -->
+            <div class="acard" data-tags="ghl">
+              <div class="acard-diagram">
+                <div class="adiag-bar">
+                  <span class="adiag-label">⬡ WORKFLOW DIAGRAM</span>
+                  <div class="adiag-controls">
+                    <button class="azoom" data-d="in">+</button>
+                    <button class="azoom" data-d="out">−</button>
+                    <button class="azoom" data-d="reset">⟳</button>
+                  </div>
+                </div>
+                <div class="adiag-vp">
+                  <div class="adiag-canvas" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;padding:20px;">
+                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;">
+                      <span style="background:#7c3aed;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">GHL Form</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#7c3aed;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">GHL Workflow</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#10a37f;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">Email</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#f8a100;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">Branch Logic</span>
+                    </div>
+                    <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;width:100%;max-width:320px;">
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">① Lead fills optin form → tagged YukiStrategyCall_Lead + placed in NewLead pipeline</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">② Discount email sent with SAVE100 coupon ($100 off) + trigger link CTA</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">③ Branch: clicked → Interested tag + pipeline / 2-day timeout → Unresponsive + reminder</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">④ Order submitted → Purchased tag + Customer pipeline + confirmation email sent</div>
+                    </div>
+                  </div>
+                  <span class="adiag-hint">Click to expand</span>
+                </div>
+              </div>
+              <div class="acard-info">
+                <div class="acard-icon-row">
+                  <span class="acard-icon">📅</span>
+                  <div>
+                    <h3 class="acard-title">Yuki Strategy Call Sales Funnel</h3>
+                    <div class="acard-chips">
+                      <span class="achip">GHL</span><span class="achip">Sales Funnel</span>
+                      <span class="achip">Email Automation</span><span class="achip">Pipeline Logic</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="acard-desc">A complete GHL sales funnel for a coaching brand — a 3-step funnel captures leads on the optin page, sends a $100 discount coupon via behavioral email branching with trigger link tracking, and automatically onboards buyers with pipeline and tag logic. Zero manual follow-up after setup.</p>
+                <div class="asteps">
+                  <div class="astep"><span class="astep-n">01</span><span class="astep-t">Lead fills optin form → tagged YukiStrategyCall_Lead + placed in NewLead pipeline stage</span></div>
+                  <div class="astep"><span class="astep-n">02</span><span class="astep-t">Discount email fires instantly → SAVE100 coupon ($100 off) + trigger link CTA to Sales Page</span></div>
+                  <div class="astep"><span class="astep-n">03</span><span class="astep-t">Workflow waits for trigger link click — 2-day timeout if no interaction detected</span></div>
+                  <div class="astep"><span class="astep-n">04</span><span class="astep-t">Clicked branch → tagged Interested + pipeline advanced to Interested stage</span></div>
+                  <div class="astep"><span class="astep-n">05</span><span class="astep-t">Timeout branch → tagged Unresponsive + reminder email with urgency copy sent</span></div>
+                  <div class="astep"><span class="astep-n">06</span><span class="astep-t">Order submitted → tagged Purchased + Interested tag removed + confirmation email + pipeline moved to Customer</span></div>
+                </div>
+                <div class="aupgrade">
+                  <p class="aupgrade-title">⚡ Possible Upgrades</p>
+                  <p class="aupgrade-text">1. Cart abandon flow — tag YukiStrategyCall_CartAbandoned and trigger a 2-email rescue sequence with a final deadline.<br/>2. SMS follow-up on day 3 for Unresponsive leads — reinforce the coupon offer via text.<br/>3. Post-call survey automation — send a feedback form 24 hrs after the strategy call completes.</p>
+                </div>
+                <div class="abest">
+                  <p class="abest-title">Best For</p>
+                  <div class="abest-row"><span class="abest-dot abest-sm"></span><span class="abest-size">Solo Coach</span><span class="abest-desc">Optin page + discount email + behavioral branching + pipeline</span></div>
+                  <div class="abest-row"><span class="abest-dot abest-md"></span><span class="abest-size">Coaching Brand</span><span class="abest-desc">Cart abandon flow, SMS follow-up, upsell sequences post-call</span></div>
+                  <div class="abest-row"><span class="abest-dot abest-lg"></span><span class="abest-size">Scale</span><span class="abest-desc">Multi-product funnels, affiliate tracking, automated calendar booking flows</span></div>
+                </div>
+                <div class="avideo-label-row">
+                  <span class="avideo-chip">▶ Live Demo</span>
+                  <span class="avideo-sub">Watch the full funnel and automation flow</span>
+                </div>
+                <div class="aiframe-box">
+                  <iframe src="https://www.youtube.com/embed/lwRFdhqWey8" title="Yuki Strategy Call Sales Funnel Demo" frameborder="0" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+
           </div><!-- /acard-row -->
+
+          </div><!-- /acard-grid-wrap -->
+
 
 
 
@@ -623,7 +1119,7 @@
 
         </div><!-- /auto-wrap -->
       </div><!-- /auto-scroll-root -->
-    </div><!-- /page-work -->
+    </div><!-- /page-automations -->
 
     <!-- CASE STUDIES -->
     <div class="page" id="page-case-studies">
@@ -974,28 +1470,37 @@
   <!-- Lightbox overlay -->
   <div id="adiag-lightbox">
     <img id="adiag-lb-img" src="" alt="Workflow Diagram" />
+    <div id="adiag-lb-html"></div>
     <button id="adiag-lb-close" aria-label="Close">✕</button>
   </div>
 
   <script>
     /* Click-to-expand lightbox for workflow diagram images */
     (function(){
-      var lb    = document.getElementById('adiag-lightbox');
-      var lbImg = document.getElementById('adiag-lb-img');
-      var lbBtn = document.getElementById('adiag-lb-close');
+      var lb     = document.getElementById('adiag-lightbox');
+      var lbImg  = document.getElementById('adiag-lb-img');
+      var lbHtml = document.getElementById('adiag-lb-html');
+      var lbBtn  = document.getElementById('adiag-lb-close');
 
       document.querySelectorAll('.adiag-vp').forEach(function(vp){
-        var img     = vp.querySelector('.adiag-canvas img');
-        var canvas  = vp.querySelector('.adiag-canvas');
-        var hint    = vp.querySelector('.adiag-hint');
-        var controls = vp.closest('.acard-diagram').querySelector('.adiag-controls');
+        var img      = vp.querySelector('.adiag-canvas img');
+        var canvas   = vp.querySelector('.adiag-canvas');
+        var hint     = vp.querySelector('.adiag-hint');
+        var diagEl   = vp.closest('.acard-diagram');
+        var controls = diagEl ? diagEl.querySelector('.adiag-controls') : null;
 
         /* Hide old zoom buttons */
         if (controls) controls.style.display = 'none';
 
+        /* For HTML-rendered cards (no img), disable pointer-events on the
+           canvas so touches always reach .adiag-vp — critical on mobile */
+        if (!img && canvas) {
+          canvas.style.pointerEvents = 'none';
+        }
+
         /* Fit image to fill the preview panel */
-        if (canvas) { canvas.style.transform = 'none'; canvas.style.inset = '0'; }
-        if (img) {
+        if (canvas && img) {
+          canvas.style.transform = 'none'; canvas.style.inset = '0';
           img.style.width = '100%';
           img.style.height = '100%';
           img.style.maxWidth = 'none';
@@ -1011,8 +1516,24 @@
         /* Open lightbox on click */
         vp.style.cursor = 'pointer';
         vp.addEventListener('click', function(){
-          if (!img) return;
-          lbImg.src = img.src;
+          if (img) {
+            lbImg.src = img.src;
+            lbImg.style.display = 'block';
+            lbHtml.style.display = 'none';
+            lbHtml.innerHTML = '';
+          } else if (canvas) {
+            lbImg.style.display = 'none';
+            lbImg.src = '';
+            lbHtml.innerHTML = '';
+            var clone = canvas.cloneNode(true);
+            clone.style.pointerEvents = 'auto';
+            clone.style.position = 'static';
+            clone.style.width = '100%';
+            lbHtml.appendChild(clone);
+            lbHtml.style.display = 'block';
+          } else {
+            return;
+          }
           lb.style.display = 'flex';
           document.body.style.overflow = 'hidden';
         });
@@ -1021,14 +1542,41 @@
       function closeLb(){
         lb.style.display = 'none';
         lbImg.src = '';
+        lbImg.style.display = 'block';
+        lbHtml.innerHTML = '';
+        lbHtml.style.display = 'none';
         document.body.style.overflow = '';
       }
 
       lbBtn.addEventListener('click', function(e){ e.stopPropagation(); closeLb(); });
       lb.addEventListener('click', closeLb);
       lbImg.addEventListener('click', function(e){ e.stopPropagation(); });
+      lbHtml.addEventListener('click', function(e){ e.stopPropagation(); });
       document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeLb(); });
     })();
+  </script>
+
+  <script>
+  (function(){
+    var btns = document.querySelectorAll('.afilter-btn');
+
+    btns.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var tag = this.dataset.tag;
+        btns.forEach(function(b){ b.classList.remove('active'); });
+        this.classList.add('active');
+
+        document.querySelectorAll('.acard[data-tags]').forEach(function(card){
+          if (tag === 'all') {
+            card.classList.remove('afilter-hidden');
+          } else {
+            var tags = card.dataset.tags.split(' ');
+            card.classList.toggle('afilter-hidden', tags.indexOf(tag) === -1);
+          }
+        });
+      });
+    });
+  })();
   </script>
 </body>
 </html>
