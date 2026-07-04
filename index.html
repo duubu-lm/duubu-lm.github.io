@@ -14,7 +14,6 @@
     <a href="#" class="nav-logo" id="homeLogo" aria-label="Go to home page">✦ Duubu LM</a>
 
     <ul class="nav-links" id="navLinks">
-      <li><a href="#" data-section="work" data-transition="warp">Projects</a></li>
       <li><a href="#" data-section="automations" data-transition="warp">Automations</a></li>
       <li><a href="#" data-section="case-studies" data-transition="wormhole">Case Studies</a></li>
       <li><a href="#" data-section="about" data-transition="drift">About</a></li>
@@ -36,7 +35,7 @@
           Enterprise documents, web projects, and automation systems — all built to work while you sleep
         </p>
         <div class="hero-buttons">
-          <a href="#" class="btn btn-primary" data-section="work" data-transition="warp">View My Work</a>
+          <a href="#" class="btn btn-primary" data-section="automations" data-transition="warp">View My Work</a>
           <a href="#" class="btn btn-outline" data-section="about" data-transition="drift">About Me</a>
         </div>
       </div>
@@ -168,7 +167,11 @@
             <button class="afilter-btn" data-tag="notion">Notion</button>
             <button class="afilter-btn" data-tag="airtable">Airtable</button>
             <button class="afilter-btn" data-tag="hubspot">HubSpot</button>
+            <div class="afilter-sep"></div>
+            <button class="afilter-btn" data-tag="websites">Websites</button>
           </div>
+
+          <div id="websites-section" class="afilter-hidden"></div>
 
           <div id="acard-grid-wrap">
 
@@ -1558,13 +1561,35 @@
 
   <script>
   (function(){
-    var btns = document.querySelectorAll('.afilter-btn');
+    var btns        = document.querySelectorAll('.afilter-btn');
+    var gridWrap    = document.getElementById('acard-grid-wrap');
+    var websitesSec = document.getElementById('websites-section');
+    var websitesLoaded = false;
+
+    function loadWebsites() {
+      if (websitesLoaded) return;
+      var notice = document.querySelector('#page-work .trial-notice');
+      var grid   = document.querySelector('#page-work .grid-3');
+      if (notice) websitesSec.appendChild(notice.cloneNode(true));
+      if (grid)   websitesSec.appendChild(grid.cloneNode(true));
+      websitesLoaded = true;
+    }
 
     btns.forEach(function(btn){
       btn.addEventListener('click', function(){
         var tag = this.dataset.tag;
         btns.forEach(function(b){ b.classList.remove('active'); });
         this.classList.add('active');
+
+        if (tag === 'websites') {
+          loadWebsites();
+          gridWrap.classList.add('afilter-hidden');
+          websitesSec.classList.remove('afilter-hidden');
+          return;
+        }
+
+        gridWrap.classList.remove('afilter-hidden');
+        websitesSec.classList.add('afilter-hidden');
 
         document.querySelectorAll('.acard[data-tags]').forEach(function(card){
           if (tag === 'all') {

@@ -1207,6 +1207,10 @@ nav {
 .afilter-hidden {
   display: none !important;
 }
+#websites-section {
+  width: 100%;
+  padding-top: 8px;
+}
 @media (max-width: 600px) {
   .afilter-bar { gap: 6px; }
   .afilter-sep { display: none; }
