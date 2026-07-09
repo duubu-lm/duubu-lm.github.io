@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Care Coordinator — Demo</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0f0f0f;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding-bottom: 60px;
+    }
+
+    .demo-banner {
+      background: #1a1a1a;
+      border-bottom: 1px solid #2a2a2a;
+      color: #888;
+      font-size: 12px;
+      padding: 8px 20px;
+      text-align: center;
+    }
+    .demo-banner span { color: #FF6B35; font-weight: 600; }
+
+    .page-header {
+      padding: 40px 20px 0;
+      text-align: center;
+    }
+    .page-header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #fff;
+    }
+    .page-header p { color: #888; margin-top: 6px; font-size: 14px; }
+
+    .sections-wrap {
+      max-width: 640px;
+      margin: 40px auto 0;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .form-section {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 28px 24px;
+    }
+    .form-section.staff-only {
+      background: #181510;
+      border-color: #3a2a1a;
+    }
+
+    .section-head { margin-bottom: 22px; }
+    .section-head h2 { font-size: 18px; font-weight: 600; color: #fff; }
+    .section-head p  { color: #888; font-size: 13px; margin-top: 4px; }
+
+    .staff-badge {
+      display: inline-block;
+      background: #3a2010;
+      color: #FF6B35;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+
+    .form-group { margin-bottom: 16px; }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: #bbb;
+      margin-bottom: 6px;
+    }
+    label .req { color: #FF6B35; margin-left: 2px; }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%;
+      background: #111;
+      border: 1px solid #2a2a2a;
+      border-radius: 7px;
+      color: #e0e0e0;
+      font-family: inherit;
+      font-size: 14px;
+      padding: 10px 12px;
+      outline: none;
+      transition: border-color 0.15s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="date"]:focus,
+    select:focus,
+    textarea:focus { border-color: #FF6B35; }
+
+    textarea { resize: vertical; min-height: 90px; }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: invert(0.6);
+      cursor: pointer;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+    .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: #e0e0e0;
+      font-weight: 400;
+      margin-bottom: 0;
+      cursor: pointer;
+    }
+    input[type="radio"] {
+      accent-color: #FF6B35;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    .field-error {
+      color: #f87171;
+      font-size: 12px;
+      margin-top: 5px;
+      display: none;
+    }
+    .field-error.visible { display: block; }
+
+    .submit-btn {
+      width: 100%;
+      background: #FF6B35;
+      border: none;
+      border-radius: 7px;
+      color: #fff;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px;
+      margin-top: 8px;
+      transition: background 0.15s, opacity 0.15s;
+    }
+    .submit-btn:hover    { background: #e85d2a; }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .form-msg {
+      border-radius: 7px;
+      font-size: 13px;
+      padding: 10px 14px;
+      margin-top: 14px;
+      display: none;
+    }
+    .form-msg.success {
+      background: #0f2a1a;
+      border: 1px solid #1a4a2a;
+      color: #4ade80;
+      display: block;
+    }
+    .form-msg.error {
+      background: #2a0f0f;
+      border: 1px solid #4a1a1a;
+      color: #f87171;
+      display: block;
+    }
+
+    @media (max-width: 500px) {
+      .form-section { padding: 20px 16px; }
+      .radio-group  { gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="demo-banner">
+    <span>Demo only</span> — requires local n8n instance running at localhost:5678
+  </div>
+
+  <div class="page-header">
+    <h1>Care Coordinator</h1>
+    <p>Patient intake, appointment booking, and visit documentation</p>
+  </div>
+
+  <div class="sections-wrap">
+
+    <!-- ── SECTION 1: New Patient Intake ── -->
+    <section class="form-section">
+      <div class="section-head">
+        <h2>New Patient Intake</h2>
+        <p>Fill in your details and describe your symptoms — our team will follow up by email.</p>
+      </div>
+      <form id="form-intake" novalidate>
+        <div class="form-group">
+          <label>Patient Name <span class="req">*</span></label>
+          <input type="text" id="intake-name" placeholder="Full name" />
+          <div class="field-error" id="err-intake-name">Name is required.</div>
+        </div>
+        <div class="form-group">
+          <label>Contact Phone <span class="req">*</span></label>
+          <input type="text" id="intake-phone" placeholder="e.g. 555-000-1234" />
+          <div class="field-error" id="err-intake-phone">Phone number is required.</div>
+        </div>
+        <div class="form-group">
+          <label>Contact Email <span class="req">*</span></label>
+          <input type="email" id="intake-email" placeholder="you@example.com" />
+          <div class="field-error" id="err-intake-email">A valid email is required.</div>
+        </div>
+        <div class="form-group">
+          <label>Symptoms <span class="req">*</span></label>
+          <textarea id="intake-symptoms" placeholder="Describe your symptoms..."></textarea>
+          <div class="field-error" id="err-intake-symptoms">Please describe your symptoms.</div>
+        </div>
+        <button type="submit" class="submit-btn" id="btn-intake">Submit Intake</button>
+        <div class="form-msg" id="msg-intake"></div>
+      </form>
+    </section>
+
+    <!-- ── SECTION 2: Appointment Booking ── -->
+    <section class="form-section" id="appointment-section">
+      <div class="section-head">
+        <h2>Choose Your Appointment</h2>
+        <p>Book a specialist visit. Select a future date and your preferred time slot.</p>
+      </div>
+      <form id="form-appt" novalidate>
+        <div class="form-group">
+          <label>Patient Name <span class="req">*</span></label>
+          <input type="text" id="appt-name" placeholder="Full name" />
+          <div class="field-error" id="err-appt-name">Name is required.</div>
+        </div>
+        <div class="form-group">
+          <label>Contact Phone <span class="req">*</span></label>
+          <input type="text" id="appt-phone" placeholder="e.g. 555-000-1234" />
+          <div class="field-error" id="err-appt-phone">Phone number is required.</div>
+        </div>
+        <div class="form-group">
+          <label>Contact Email <span class="req">*</span></label>
+          <input type="email" id="appt-email" placeholder="you@example.com" />
+          <div class="field-error" id="err-appt-email">A valid email is required.</div>
+        </div>
+        <div class="form-group">
+          <label>Symptom Summary <span class="req">*</span></label>
+          <textarea id="appt-symptoms" placeholder="Brief summary of symptoms..."></textarea>
+          <div class="field-error" id="err-appt-symptoms">Please provide a symptom summary.</div>
+        </div>
+        <div class="form-group">
+          <label>Specialty <span class="req">*</span></label>
+          <select id="appt-specialty">
+            <option value="">— Select specialty —</option>
+            <option value="cardiology">Cardiology</option>
+            <option value="dermatology">Dermatology</option>
+            <option value="orthopedics">Orthopedics</option>
+            <option value="general">General</option>
+          </select>
+          <div class="field-error" id="err-appt-specialty">Please select a specialty.</div>
+        </div>
+        <div class="form-group">
+          <label>Preferred Date <span class="req">*</span></label>
+          <input type="date" id="appt-date" />
+          <div class="field-error" id="err-appt-date">Please choose a future date.</div>
+        </div>
+        <div class="form-group">
+          <label>Preferred Time <span class="req">*</span></label>
+          <div class="radio-group">
+            <label><input type="radio" name="appt-time" value="10am" /> 10am</label>
+            <label><input type="radio" name="appt-time" value="4pm"  /> 4pm</label>
+          </div>
+          <div class="field-error" id="err-appt-time">Please select a time slot.</div>
+        </div>
+        <button type="submit" class="submit-btn" id="btn-appt">Book Appointment</button>
+        <div class="form-msg" id="msg-appt"></div>
+      </form>
+    </section>
+
+    <!-- ── SECTION 3: Doctor Visit Notes (Staff Only) ── -->
+    <section class="form-section staff-only">
+      <div class="section-head">
+        <div class="staff-badge">Staff / Doctor Use Only</div>
+        <h2>Doctor Visit Notes</h2>
+        <p>Record visit observations and flag whether follow-up is needed.</p>
+      </div>
+      <form id="form-notes" novalidate>
+        <div class="form-group">
+          <label>Patient Name <span class="req">*</span></label>
+          <input type="text" id="notes-patient" placeholder="Full name" />
+          <div class="field-error" id="err-notes-patient">Patient name is required.</div>
+        </div>
+        <div class="form-group">
+          <label>Doctor Name <span class="req">*</span></label>
+          <input type="text" id="notes-doctor" placeholder="Dr. ..." />
+          <div class="field-error" id="err-notes-doctor">Doctor name is required.</div>
+        </div>
+        <div class="form-group">
+          <label>Visit Notes <span class="req">*</span></label>
+          <textarea id="notes-notes" placeholder="Observations, diagnosis, prescriptions..." style="min-height:120px;"></textarea>
+          <div class="field-error" id="err-notes-notes">Visit notes are required.</div>
+        </div>
+        <div class="form-group">
+          <label>Follow-up Needed <span class="req">*</span></label>
+          <div class="radio-group">
+            <label><input type="radio" name="notes-followup" value="true"  /> Yes</label>
+            <label><input type="radio" name="notes-followup" value="false" /> No</label>
+          </div>
+          <div class="field-error" id="err-notes-followup">Please indicate if follow-up is needed.</div>
+        </div>
+        <button type="submit" class="submit-btn" id="btn-notes">Save Visit Notes</button>
+        <div class="form-msg" id="msg-notes"></div>
+      </form>
+    </section>
+
+  </div><!-- /sections-wrap -->
+
+  <script>
+    // Set appointment date min to tomorrow — same-day booking not allowed
+    (function () {
+      var d = new Date();
+      d.setDate(d.getDate() + 1);
+      document.getElementById('appt-date').min = d.toISOString().split('T')[0];
+    })();
+
+    // n8n CORS note: n8n's webhook node must return an Access-Control-Allow-Origin header
+    // for browser fetch() to succeed. Without it the browser blocks the request silently.
+    // Enable via n8n's webhook settings or a reverse proxy in front of n8n.
+
+    function showErr(id, msg) {
+      var el = document.getElementById(id);
+      if (msg) el.textContent = msg;
+      el.classList.add('visible');
+    }
+    function clearErr(id) { document.getElementById(id).classList.remove('visible'); }
+    function setMsg(id, type, text) {
+      var el = document.getElementById(id);
+      el.className = 'form-msg ' + type;
+      el.textContent = text;
+    }
+    function clearMsg(id) {
+      var el = document.getElementById(id);
+      el.className = 'form-msg';
+      el.textContent = '';
+    }
+    function setLoading(btnId, on) {
+      var btn = document.getElementById(btnId);
+      btn.disabled = on;
+      btn.textContent = on ? 'Sending…' : btn.dataset.label;
+    }
+    ['btn-intake','btn-appt','btn-notes'].forEach(function(id) {
+      var b = document.getElementById(id);
+      b.dataset.label = b.textContent;
+    });
+
+    // ── Form 1: Intake ──
+    document.getElementById('form-intake').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var name     = document.getElementById('intake-name').value.trim();
+      var phone    = document.getElementById('intake-phone').value.trim();
+      var email    = document.getElementById('intake-email').value.trim();
+      var symptoms = document.getElementById('intake-symptoms').value.trim();
+      var valid    = true;
+
+      ['err-intake-name','err-intake-phone','err-intake-email','err-intake-symptoms'].forEach(clearErr);
+      clearMsg('msg-intake');
+
+      if (!name)     { showErr('err-intake-name',     'Name is required.');              valid = false; }
+      if (!phone)    { showErr('err-intake-phone',    'Phone number is required.');      valid = false; }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+                     { showErr('err-intake-email',    'A valid email is required.');     valid = false; }
+      if (!symptoms) { showErr('err-intake-symptoms', 'Please describe your symptoms.'); valid = false; }
+      if (!valid) return;
+
+      setLoading('btn-intake', true);
+      // n8n CORS note: see comment above
+      fetch('http://localhost:5678/webhook/3ff5db77-29ae-4964-9710-c584bf97eea0', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ patient_name: name, contact_phone: phone, contact_email: email, symptoms: symptoms })
+      })
+      .then(function(res) {
+        if (!res.ok) throw new Error('non-200');
+        setMsg('msg-intake', 'success', 'Thanks — check your email for next steps.');
+        document.getElementById('form-intake').reset();
+      })
+      .catch(function() {
+        setMsg('msg-intake', 'error', 'Unable to reach the server — please make sure the system is running and try again.');
+      })
+      .finally(function() { setLoading('btn-intake', false); });
+    });
+
+    // ── Form 2: Appointment ──
+    document.getElementById('form-appt').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var name      = document.getElementById('appt-name').value.trim();
+      var phone     = document.getElementById('appt-phone').value.trim();
+      var email     = document.getElementById('appt-email').value.trim();
+      var symptoms  = document.getElementById('appt-symptoms').value.trim();
+      var specialty = document.getElementById('appt-specialty').value;
+      var dateVal   = document.getElementById('appt-date').value;
+      var timeEl    = document.querySelector('input[name="appt-time"]:checked');
+      var valid     = true;
+
+      ['err-appt-name','err-appt-phone','err-appt-email','err-appt-symptoms',
+       'err-appt-specialty','err-appt-date','err-appt-time'].forEach(clearErr);
+      clearMsg('msg-appt');
+
+      if (!name)      { showErr('err-appt-name',      'Name is required.');                   valid = false; }
+      if (!phone)     { showErr('err-appt-phone',     'Phone number is required.');           valid = false; }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+                      { showErr('err-appt-email',     'A valid email is required.');          valid = false; }
+      if (!symptoms)  { showErr('err-appt-symptoms',  'Please provide a symptom summary.');  valid = false; }
+      if (!specialty) { showErr('err-appt-specialty', 'Please select a specialty.');         valid = false; }
+
+      if (!dateVal) {
+        showErr('err-appt-date', 'Please choose a future date.');
+        valid = false;
+      } else {
+        var today  = new Date(); today.setHours(0, 0, 0, 0);
+        var chosen = new Date(dateVal + 'T00:00:00');
+        if (chosen <= today) {
+          showErr('err-appt-date', 'Please choose a future date — same-day and past dates are not allowed.');
+          valid = false;
+        }
+      }
+
+      if (!timeEl) { showErr('err-appt-time', 'Please select a time slot.'); valid = false; }
+      if (!valid) return;
+
+      setLoading('btn-appt', true);
+      // n8n CORS note: see comment above
+      fetch('http://localhost:5678/webhook/0c4ae622-311b-49fb-abc1-818950413204', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          patient_name:    name,
+          contact_phone:   phone,
+          contact_email:   email,
+          symptom_summary: symptoms,
+          specialty:       specialty,
+          preferred_date:  dateVal,
+          preferred_time:  timeEl.value   // exactly "10am" or "4pm"
+        })
+      })
+      .then(function(res) {
+        if (!res.ok) throw new Error('non-200');
+        setMsg('msg-appt', 'success', 'Appointment request received — you\'ll get a confirmation by email.');
+        document.getElementById('form-appt').reset();
+      })
+      .catch(function() {
+        setMsg('msg-appt', 'error', 'Unable to reach the server — please make sure the system is running and try again.');
+      })
+      .finally(function() { setLoading('btn-appt', false); });
+    });
+
+    // ── Form 3: Visit Notes ──
+    document.getElementById('form-notes').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var patient  = document.getElementById('notes-patient').value.trim();
+      var doctor   = document.getElementById('notes-doctor').value.trim();
+      var notes    = document.getElementById('notes-notes').value.trim();
+      var followEl = document.querySelector('input[name="notes-followup"]:checked');
+      var valid    = true;
+
+      ['err-notes-patient','err-notes-doctor','err-notes-notes','err-notes-followup'].forEach(clearErr);
+      clearMsg('msg-notes');
+
+      if (!patient)  { showErr('err-notes-patient',  'Patient name is required.');                 valid = false; }
+      if (!doctor)   { showErr('err-notes-doctor',   'Doctor name is required.');                  valid = false; }
+      if (!notes)    { showErr('err-notes-notes',    'Visit notes are required.');                 valid = false; }
+      if (!followEl) { showErr('err-notes-followup', 'Please indicate if follow-up is needed.');  valid = false; }
+      if (!valid) return;
+
+      setLoading('btn-notes', true);
+      // n8n CORS note: see comment above
+      fetch('http://localhost:5678/webhook/a2c7d4ba-dad1-4576-bf2b-f8949ad5aab9', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          patient_name:     patient,
+          doctor_name:      doctor,
+          visit_notes:      notes,
+          follow_up_needed: followEl.value === 'true'  // actual boolean, not string
+        })
+      })
+      .then(function(res) {
+        if (!res.ok) throw new Error('non-200');
+        setMsg('msg-notes', 'success', 'Visit notes saved successfully.');
+        document.getElementById('form-notes').reset();
+      })
+      .catch(function() {
+        setMsg('msg-notes', 'error', 'Unable to reach the server — please make sure the system is running and try again.');
+      })
+      .finally(function() { setLoading('btn-notes', false); });
+    });
+  </script>
+</body>
+</html>

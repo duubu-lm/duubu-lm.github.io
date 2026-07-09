@@ -57,6 +57,18 @@
 
         <div class="grid-3">
           <div class="card">
+            <div class="card-icon">🏥</div>
+            <h3>Care Coordinator</h3>
+            <p>
+              A multi-form patient management demo — new patient intake, appointment booking
+              by specialty with date validation, and doctor visit notes, each posting to
+              dedicated n8n webhook endpoints with full client-side validation and error handling.
+            </p>
+            <span class="card-tag">n8n · Webhooks · Healthcare</span><br />
+            <a href="care-coordinator/index.html" class="card-link">View Project →</a>
+          </div>
+
+          <div class="card">
             <div class="card-icon">🚀</div>
             <h3>Yuki IT Consultancy</h3>
             <p>
@@ -1568,10 +1580,8 @@
 
     function loadWebsites() {
       if (websitesLoaded) return;
-      var notice = document.querySelector('#page-work .trial-notice');
-      var grid   = document.querySelector('#page-work .grid-3');
-      if (notice) websitesSec.appendChild(notice.cloneNode(true));
-      if (grid)   websitesSec.appendChild(grid.cloneNode(true));
+      var grid = document.querySelector('#page-work .grid-3');
+      if (grid) websitesSec.appendChild(grid.cloneNode(true));
       websitesLoaded = true;
     }
 
