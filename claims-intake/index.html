@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Claims Intake</title>
+<style>
+  :root {
+    --color-bg-top: #EEF3F8;
+    --color-bg-bottom: #E3EBF3;
+    --color-card: #FFFFFF;
+    --color-primary: #0B4F6C;
+    --color-primary-dark: #093A50;
+    --color-accent: #14919B;
+    --color-accent-light: #E6F5F5;
+    --color-text: #1F2A37;
+    --color-muted: #64748B;
+    --color-border: #DCE4EC;
+    --color-error: #C0392B;
+    --color-error-bg: #FDECEA;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(180deg, var(--color-bg-top) 0%, var(--color-bg-bottom) 100%);
+    font-family: 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
+    color: var(--color-text);
+    padding: 48px 20px;
+  }
+
+  .page-wrap { max-width: 640px; margin: 0 auto; }
+
+  .card {
+    background: var(--color-card);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(11,79,108,0.12), 0 2px 8px rgba(11,79,108,0.06);
+    padding: 44px 48px;
+  }
+
+  .header-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+  .staff-link {
+    font-size: 12px;
+    color: var(--color-muted);
+    text-decoration: none;
+    white-space: nowrap;
+    margin-top: 6px;
+    transition: color 0.15s;
+  }
+  .staff-link:hover { color: var(--color-primary); text-decoration: underline; }
+
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .card-header h1 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    color: var(--color-primary-dark);
+    margin: 0;
+  }
+  .subtitle { color: var(--color-muted); font-size: 14px; margin: 10px 0 0; }
+
+  .progress { margin: 32px 0 0; }
+  .progress-text {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+  }
+  .progress-track {
+    background: var(--color-border);
+    height: 6px;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    height: 100%;
+    width: 25%;
+    transition: width 0.3s ease;
+  }
+  .progress-steps {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    margin: 12px 0 0;
+    padding: 0;
+    gap: 8px;
+  }
+  .step-label { font-size: 12px; color: var(--color-muted); flex: 1; text-align: center; }
+  .step-label.active { color: var(--color-primary); font-weight: 600; }
+  .step-label.completed { color: var(--color-accent); }
+
+  .form-step { display: none; margin-top: 34px; }
+  .form-step.active { display: block; }
+  .step-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-primary-dark);
+    margin: 0 0 22px;
+  }
+
+  .form-group { margin-bottom: 22px; }
+  label { display: block; font-size: 14px; font-weight: 600; color: #334155; margin-bottom: 6px; }
+  .req { color: var(--color-error); margin-left: 2px; }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="date"],
+  input[type="number"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--color-text);
+    background: #FBFCFE;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(20,145,155,0.15);
+    background: #fff;
+  }
+
+  textarea { resize: vertical; min-height: 110px; }
+
+  .helper-text { font-size: 12px; color: var(--color-muted); margin: 6px 0 0; }
+
+  .input-group { display: flex; align-items: stretch; }
+  .input-prefix {
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    background: var(--color-accent-light);
+    border: 1px solid var(--color-border);
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+  .input-group input { border-radius: 0 8px 8px 0; }
+
+  input[type="file"] { width: 100%; font-size: 13px; color: var(--color-muted); padding: 10px 0; }
+
+  .field-error {
+    display: none;
+    font-size: 12.5px;
+    color: var(--color-error);
+    margin-top: 6px;
+  }
+  .field-error.visible { display: block; }
+
+  .submit-error {
+    display: none;
+    background: var(--color-error-bg);
+    border: 1px solid #F5C6C0;
+    color: var(--color-error);
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    margin-top: 20px;
+  }
+  .submit-error.visible { display: block; }
+
+  .form-nav { display: flex; justify-content: space-between; margin-top: 36px; gap: 12px; }
+  .btn {
+    border: none;
+    border-radius: 8px;
+    padding: 12px 26px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s, opacity 0.15s;
+  }
+  .btn-back { background: #fff; border: 1px solid var(--color-border); color: var(--color-muted); }
+  .btn-back:hover { background: #F4F7FA; }
+  .btn-primary { background: var(--color-primary); color: #fff; margin-left: auto; }
+  .btn-primary:hover { background: var(--color-primary-dark); }
+  .btn-primary:disabled { opacity: 0.65; cursor: not-allowed; }
+
+  .confirmation { display: none; text-align: center; padding: 40px 10px; }
+  .confirmation.visible { display: block; }
+  .confirmation-icon { margin: 0 auto 20px; }
+  .confirmation h2 { font-size: 22px; color: var(--color-primary-dark); margin: 0 0 10px; }
+  .confirmation-message { color: #334155; font-size: 15px; margin: 0 0 8px; }
+  .confirmation-id { color: var(--color-accent); font-size: 14px; font-weight: 700; }
+
+  @media (max-width: 560px) {
+    body { padding: 24px 12px; }
+    .card { padding: 28px 22px; }
+    .progress-steps { display: none; }
+    .header-top { flex-direction: column; gap: 6px; }
+    .form-nav { flex-direction: column-reverse; }
+    .btn-primary { margin-left: 0; width: 100%; }
+    .btn-back { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="page-wrap">
+    <div class="card">
+
+      <header class="card-header">
+        <div class="header-top">
+          <div class="brand">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-primary); flex-shrink: 0;">
+              <path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5l-8-3Z"></path>
+              <path d="m9 12 2 2 4-4"></path>
+            </svg>
+            <h1>Claims Intake</h1>
+          </div>
+          <a class="staff-link" href="claims-review/index.html">Staff Portal</a>
+        </div>
+        <p class="subtitle">Please complete all steps to submit your insurance claim.</p>
+      </header>
+
+      <div class="progress" id="progress-wrap">
+        <div class="progress-text">Step <span id="step-current">1</span> of 4</div>
+        <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+        <ol class="progress-steps">
+          <li class="step-label" data-step="1">Your Information</li>
+          <li class="step-label" data-step="2">Policy Details</li>
+          <li class="step-label" data-step="3">What Happened</li>
+          <li class="step-label" data-step="4">Evidence</li>
+        </ol>
+      </div>
+
+      <form id="claim-form" novalidate>
+        <input type="hidden" id="intake-token" name="intake_token" value="">
+
+        <!-- STEP 1: Your Information -->
+        <section class="form-step" data-step="1">
+          <h2 class="step-title">Your Information</h2>
+
+          <div class="form-group">
+            <label for="claimant-name">Claimant Name <span class="req">*</span></label>
+            <input type="text" id="claimant-name" name="claimant_name" required autocomplete="name">
+            <div class="field-error" id="err-claimant-name"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-email">Contact Email <span class="req">*</span></label>
+            <input type="email" id="contact-email" name="contact_email" required autocomplete="email">
+            <div class="field-error" id="err-contact-email"></div>
+          </div>
+        </section>
+
+        <!-- STEP 2: Policy Details -->
+        <section class="form-step" data-step="2">
+          <h2 class="step-title">Policy Details</h2>
+
+          <div class="form-group">
+            <label for="policy-number">Policy Number <span class="req">*</span></label>
+            <input type="text" id="policy-number" name="policy_number" required
+                   placeholder="e.g. POL-00123" pattern="POL-\d{5}" maxlength="9">
+            <p class="helper-text">Format: POL- followed by exactly 5 digits</p>
+            <div class="field-error" id="err-policy-number"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="claim-type">Claim Type <span class="req">*</span></label>
+            <select id="claim-type" name="claim_type" required>
+              <option value="" disabled selected>— Select claim type —</option>
+              <option value="auto">Auto</option>
+              <option value="home">Home</option>
+              <option value="health">Health</option>
+            </select>
+            <div class="field-error" id="err-claim-type"></div>
+          </div>
+        </section>
+
+        <!-- STEP 3: What Happened -->
+        <section class="form-step" data-step="3">
+          <h2 class="step-title">What Happened</h2>
+
+          <div class="form-group">
+            <label for="claim-description">Claim Description <span class="req">*</span></label>
+            <textarea id="claim-description" name="claim_description" required minlength="20" rows="5"
+                      placeholder="Please describe what happened in detail..."></textarea>
+            <div class="field-error" id="err-claim-description"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="incident-date">Incident Date <span class="req">*</span></label>
+            <input type="date" id="incident-date" name="incident_date" required>
+            <div class="field-error" id="err-incident-date"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="estimated-amount">Estimated Amount <span class="req">*</span></label>
+            <div class="input-group">
+              <span class="input-prefix">PHP</span>
+              <input type="number" id="estimated-amount" name="estimated_amount" required min="1" step="0.01" placeholder="0.00">
+            </div>
+            <div class="field-error" id="err-estimated-amount"></div>
+          </div>
+        </section>
+
+        <!-- STEP 4: Evidence -->
+        <section class="form-step" data-step="4">
+          <h2 class="step-title">Evidence</h2>
+
+          <div class="form-group">
+            <label for="evidence-photo">Evidence Photo <span class="req">*</span></label>
+            <input type="file" id="evidence-photo" name="evidence_photo" required accept="image/jpeg,image/png,image/heic">
+            <p class="helper-text">JPEG, PNG, or HEIC. Max file size 10MB.</p>
+            <div class="field-error" id="err-evidence-photo"></div>
+          </div>
+
+          <div class="submit-error" id="submit-error"></div>
+        </section>
+
+        <div class="form-nav">
+          <button type="button" class="btn btn-back" id="btn-back">Back</button>
+          <button type="submit" class="btn btn-primary" id="btn-next">Next</button>
+        </div>
+      </form>
+
+      <div class="confirmation" id="confirmation">
+        <svg class="confirmation-icon" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent);">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="m8 12 3 3 5-6"></path>
+        </svg>
+        <h2>Claim Submitted</h2>
+        <p class="confirmation-message" id="confirmation-message"></p>
+        <p class="confirmation-id" id="confirmation-id"></p>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var currentStep = 1;
+      var totalSteps = 4;
+      var intakeToken = '';
+
+      var stepSections = document.querySelectorAll('.form-step');
+      var stepLabels = document.querySelectorAll('.step-label');
+      var stepCurrentEl = document.getElementById('step-current');
+      var progressFill = document.getElementById('progress-fill');
+      var btnBack = document.getElementById('btn-back');
+      var btnNext = document.getElementById('btn-next');
+      var form = document.getElementById('claim-form');
+      var confirmation = document.getElementById('confirmation');
+      var progressWrap = document.getElementById('progress-wrap');
+
+      function updateStepUI() {
+        stepSections.forEach(function (sec) {
+          sec.classList.toggle('active', parseInt(sec.dataset.step, 10) === currentStep);
+        });
+        stepLabels.forEach(function (label) {
+          var s = parseInt(label.dataset.step, 10);
+          label.classList.toggle('active', s === currentStep);
+          label.classList.toggle('completed', s < currentStep);
+        });
+        stepCurrentEl.textContent = currentStep;
+        progressFill.style.width = (currentStep / totalSteps * 100) + '%';
+        btnBack.style.display = currentStep === 1 ? 'none' : 'inline-flex';
+        btnNext.textContent = currentStep === totalSteps ? 'Submit Claim' : 'Next';
+      }
+
+      function showFieldError(id, msg) {
+        var el = document.getElementById(id);
+        el.textContent = msg;
+        el.classList.add('visible');
+      }
+      function clearFieldError(id) {
+        var el = document.getElementById(id);
+        el.textContent = '';
+        el.classList.remove('visible');
+      }
+      function clearFieldErrors(ids) { ids.forEach(clearFieldError); }
+
+      function isValidPolicyNumber(value) {
+        return /^POL-\d{5}$/.test(value);
+      }
+
+      function validateStep1() {
+        clearFieldErrors(['err-claimant-name', 'err-contact-email']);
+        var valid = true;
+        var name = document.getElementById('claimant-name');
+        var email = document.getElementById('contact-email');
+
+        if (!name.value.trim()) {
+          showFieldError('err-claimant-name', 'Claimant name is required.');
+          valid = false;
+        }
+        if (!email.checkValidity()) {
+          showFieldError('err-contact-email', 'Please enter a valid email address.');
+          valid = false;
+        }
+        return valid;
+      }
+
+      function validatePolicyNumberField() {
+        var policy = document.getElementById('policy-number');
+        clearFieldError('err-policy-number');
+        if (!isValidPolicyNumber(policy.value.trim())) {
+          showFieldError('err-policy-number', 'Policy number must be in the format POL- followed by exactly 5 digits (e.g. POL-00123).');
+          return false;
+        }
+        return true;
+      }
+
+      function validateStep2() {
+        var policyValid = validatePolicyNumberField();
+        var claimType = document.getElementById('claim-type');
+        clearFieldError('err-claim-type');
+        var typeValid = true;
+        if (!claimType.value) {
+          showFieldError('err-claim-type', 'Please select a claim type.');
+          typeValid = false;
+        }
+        return policyValid && typeValid;
+      }
+
+      function validateStep3() {
+        clearFieldErrors(['err-claim-description', 'err-incident-date', 'err-estimated-amount']);
+        var valid = true;
+        var desc = document.getElementById('claim-description');
+        var dateField = document.getElementById('incident-date');
+        var amount = document.getElementById('estimated-amount');
+
+        if (desc.value.trim().length < 20) {
+          showFieldError('err-claim-description', 'Please provide at least 20 characters describing what happened.');
+          valid = false;
+        }
+
+        if (!dateField.value) {
+          showFieldError('err-incident-date', 'Incident date is required.');
+          valid = false;
+        } else {
+          var today = new Date(); today.setHours(0, 0, 0, 0);
+          var chosen = new Date(dateField.value + 'T00:00:00');
+          if (chosen > today) {
+            showFieldError('err-incident-date', 'Incident date cannot be in the future.');
+            valid = false;
+          }
+        }
+
+        var amountNum = parseFloat(amount.value);
+        if (amount.value === '' || isNaN(amountNum) || amountNum <= 0) {
+          showFieldError('err-estimated-amount', 'Please enter an estimated amount greater than 0.');
+          valid = false;
+        }
+
+        return valid;
+      }
+
+      function validateStep4() {
+        clearFieldError('err-evidence-photo');
+        var fileInput = document.getElementById('evidence-photo');
+        var file = fileInput.files[0];
+        var allowedTypes = ['image/jpeg', 'image/png', 'image/heic'];
+        var maxSize = 10 * 1024 * 1024;
+
+        if (!file) {
+          showFieldError('err-evidence-photo', 'Please attach a photo of the evidence.');
+          return false;
+        }
+        if (allowedTypes.indexOf(file.type) === -1) {
+          showFieldError('err-evidence-photo', 'File must be a JPEG, PNG, or HEIC image.');
+          return false;
+        }
+        if (file.size > maxSize) {
+          showFieldError('err-evidence-photo', 'File must be 10MB or smaller.');
+          return false;
+        }
+        return true;
+      }
+
+      function validateCurrentStep() {
+        if (currentStep === 1) return validateStep1();
+        if (currentStep === 2) return validateStep2();
+        if (currentStep === 3) return validateStep3();
+        if (currentStep === 4) return validateStep4();
+        return true;
+      }
+
+      document.getElementById('policy-number').addEventListener('blur', validatePolicyNumberField);
+
+      btnBack.addEventListener('click', function () {
+        if (currentStep > 1) {
+          currentStep -= 1;
+          updateStepUI();
+        }
+      });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!validateCurrentStep()) return;
+
+        if (currentStep < totalSteps) {
+          currentStep += 1;
+          updateStepUI();
+          return;
+        }
+
+        submitClaim();
+      });
+
+      function setSubmitError(msg) {
+        var el = document.getElementById('submit-error');
+        el.textContent = msg;
+        el.classList.toggle('visible', !!msg);
+      }
+
+      function submitClaim() {
+        setSubmitError('');
+        btnNext.disabled = true;
+        btnNext.textContent = 'Submitting…';
+
+        var formData = new FormData();
+        formData.append('claimant_name', document.getElementById('claimant-name').value.trim());
+        formData.append('contact_email', document.getElementById('contact-email').value.trim());
+        formData.append('policy_number', document.getElementById('policy-number').value.trim());
+        formData.append('claim_type_hint', document.getElementById('claim-type').value);
+        formData.append('claim_description', document.getElementById('claim-description').value.trim());
+        formData.append('incident_date', document.getElementById('incident-date').value);
+        formData.append('estimated_amount', document.getElementById('estimated-amount').value);
+        formData.append('intake_token', intakeToken);
+        formData.append('evidence_photo', document.getElementById('evidence-photo').files[0]);
+
+        fetch('http://localhost:5678/webhook/claim-intake', {
+          method: 'POST',
+          body: formData
+        })
+          .then(function (res) {
+            if (!res.ok) throw new Error('Request failed');
+            return res.json();
+          })
+          .then(function (data) {
+            showConfirmation(data);
+          })
+          .catch(function () {
+            setSubmitError('Something went wrong submitting your claim. Please try again or contact support.');
+          })
+          .finally(function () {
+            btnNext.disabled = false;
+            btnNext.textContent = currentStep === totalSteps ? 'Submit Claim' : 'Next';
+          });
+      }
+
+      function showConfirmation(data) {
+        form.style.display = 'none';
+        progressWrap.style.display = 'none';
+        document.getElementById('confirmation-message').textContent = data.message || 'Your claim has been received.';
+        document.getElementById('confirmation-id').textContent = data.claim_id ? ('Claim ID: ' + data.claim_id) : '';
+        confirmation.classList.add('visible');
+      }
+
+      (function setIncidentDateMax() {
+        var d = new Date();
+        var yyyy = d.getFullYear();
+        var mm = String(d.getMonth() + 1).padStart(2, '0');
+        var dd = String(d.getDate()).padStart(2, '0');
+        document.getElementById('incident-date').max = yyyy + '-' + mm + '-' + dd;
+      })();
+
+      fetch('http://localhost:5678/webhook/12691321-3363-4959-9618-0abd26089704')
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          intakeToken = (data && data.intake_token) ? data.intake_token : '';
+          document.getElementById('intake-token').value = intakeToken;
+        })
+        .catch(function () {
+          // Token fetch failed silently; submission proceeds with an empty token
+        });
+
+      updateStepUI();
+    })();
+  </script>
+
+</body>
+</html>

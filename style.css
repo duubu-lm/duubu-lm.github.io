@@ -643,6 +643,8 @@ nav {
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
+.acard-row.single { grid-template-columns: 1fr; }
+.acard-row.single .acard { max-width: 560px; margin: 0 auto; }
 
 /* Regular card — vertical stack */
 .acard {

@@ -57,6 +57,19 @@
 
         <div class="grid-3">
           <div class="card">
+            <div class="card-icon">🛡️</div>
+            <h3>ClaimIntake</h3>
+            <p>
+              A production-grade insurance claims intake and review system — a public 4-step
+              form, protected by single-use tokens, feeds an n8n backend that runs agentic RAG
+              policy search and vision-based damage assessment, then tiers and escalates every
+              claim to a custom internal Reviewer Terminal.
+            </p>
+            <span class="card-tag">n8n · Supabase pgvector · OpenAI Vision · Airtable</span><br />
+            <a href="claims-intake/index.html" class="card-link">View Project →</a>
+          </div>
+
+          <div class="card">
             <div class="card-icon">🏥</div>
             <h3>Care Coordinator</h3>
             <p>
@@ -186,6 +199,152 @@
           <div id="websites-section" class="afilter-hidden"></div>
 
           <div id="acard-grid-wrap">
+
+          <!-- NEWEST: Claims Full-Cycle Processor -->
+          <div class="acard-row single">
+
+            <!-- Claims Full-Cycle Processor -->
+            <div class="acard" data-tags="n8n airtable">
+              <div class="acard-diagram">
+                <div class="adiag-bar">
+                  <span class="adiag-label">⬡ WORKFLOW DIAGRAM</span>
+                  <div class="adiag-controls">
+                    <button class="azoom" data-d="in">+</button>
+                    <button class="azoom" data-d="out">−</button>
+                    <button class="azoom" data-d="reset">⟳</button>
+                  </div>
+                </div>
+                <div class="adiag-vp">
+                  <div class="adiag-canvas" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;padding:20px;">
+                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;">
+                      <span style="background:#EA4B35;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">n8n</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#3ECF8E;color:#064e3b;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">Supabase pgvector</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#10a37f;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">OpenAI GPT-4o Vision</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#18bfff;color:#0a0a0f;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">Airtable</span>
+                    </div>
+                    <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;width:100%;max-width:340px;">
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">① Single-use, 1-hour intake token validated before any claim data is processed</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">② Specialist Agent runs true agentic RAG — searches the Supabase pgvector policy reference only when ambiguous</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">③ Vision AI compares the actual evidence photo against a PII-redacted claim description</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">④ Claim tiered and escalated — private signed URLs protect every photo, Airtable is the system of record</div>
+                    </div>
+                  </div>
+                  <span class="adiag-hint">Click to expand</span>
+                </div>
+              </div>
+              <div class="acard-info">
+                <div class="acard-icon-row">
+                  <span class="acard-icon">🛡️</span>
+                  <div>
+                    <h3 class="acard-title">Claims Full-Cycle Processor</h3>
+                    <div class="acard-chips">
+                      <span class="achip">n8n</span><span class="achip">Supabase pgvector</span>
+                      <span class="achip">OpenAI GPT-4o Vision</span><span class="achip">Airtable</span><span class="achip">Gmail</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="acard-desc">A real, deployable insurance claims pipeline, not a demo — a public intake form guarded by single-use, time-limited tokens feeds an n8n backend that runs genuine agentic RAG over a Supabase pgvector policy reference and vision-based photo verification, redacts PII before any AI ever sees it, and stores evidence behind private signed URLs — before tiering every claim into Auto-Approve, Standard Review, or Escalated for a human reviewer.</p>
+                <div class="asteps">
+                  <div class="astep"><span class="astep-n">01</span><span class="astep-t">Form loads — a single-use, 1-hour intake token is minted and stored in Supabase before the claimant can submit anything</span></div>
+                  <div class="astep"><span class="astep-n">02</span><span class="astep-t">Claim Intake webhook validates the token first — exists, unused, unexpired — rejecting silently (generic 401) on any failure, then immediately marks it used to close a duplicate-record risk</span></div>
+                  <div class="astep"><span class="astep-n">03</span><span class="astep-t">AI Classifier reads the free-text description and outputs a strict claim_type/confidence pair</span></div>
+                  <div class="astep"><span class="astep-n">04</span><span class="astep-t">Specialist Assessment Agent — a true tool-using AI Agent, not a wrapped prompt — decides for itself whether to search the Supabase pgvector policy reference via a custom match_documents() RAG tool, only when a claim looks ambiguous</span></div>
+                  <div class="astep"><span class="astep-n">05</span><span class="astep-t">Deterministic fraud/anomaly checks run in parallel — amount thresholds, claim-type mismatch, policy format — plain code, no AI, where a fixed rule is more reliable</span></div>
+                  <div class="astep"><span class="astep-n">06</span><span class="astep-t">PII (name, policy number) is redacted before the Damage Assessment Agent (GPT-4o vision) ever sees the claim, then it independently judges the actual evidence photo against the description</span></div>
+                  <div class="astep"><span class="astep-n">07</span><span class="astep-t">Claim is tiered Auto-Approve / Standard / Escalated — ambiguous results always default to human review, never the more permissive outcome — and Escalated claims alert a reviewer by email and the custom Reviewer Terminal</span></div>
+                </div>
+                <div class="aupgrade">
+                  <p class="aupgrade-title">⚡ Possible Upgrades</p>
+                  <p class="aupgrade-text">1. Add authentication to the Reviewer Terminal before handling real claim data in production.<br/>2. Expand the RAG policy store with per-product indexes (Auto/Home/Health as separate document sets) for larger policy catalogs.<br/>3. Add a full audit-trail view surfacing every AI-generated note alongside the human reviewer's final decision.</p>
+                </div>
+                <div class="abest">
+                  <p class="abest-title">Best For</p>
+                  <div class="abest-row"><span class="abest-dot abest-sm"></span><span class="abest-size">Small Business</span><span class="abest-desc">A small agency that wants every claim pre-assessed and pre-sorted before a human ever opens it.</span></div>
+                  <div class="abest-row"><span class="abest-dot abest-md"></span><span class="abest-size">Growing Team</span><span class="abest-desc">A dedicated reviewer needs an internal terminal with AI-generated context, not a raw spreadsheet of submissions.</span></div>
+                  <div class="abest-row"><span class="abest-dot abest-lg"></span><span class="abest-size">Enterprise</span><span class="abest-desc">A RAG-backed policy engine and vision-based fraud detection built to plug into an existing claims management system.</span></div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /acard-row claims-processor -->
+
+          <div class="work-auto-sep"></div>
+
+          <!-- RECENT: Care Coordinator -->
+          <div class="acard-row single">
+
+            <!-- Care Coordinator -->
+            <div class="acard" data-tags="n8n airtable">
+              <div class="acard-diagram">
+                <div class="adiag-bar">
+                  <span class="adiag-label">⬡ WORKFLOW DIAGRAM</span>
+                  <div class="adiag-controls">
+                    <button class="azoom" data-d="in">+</button>
+                    <button class="azoom" data-d="out">−</button>
+                    <button class="azoom" data-d="reset">⟳</button>
+                  </div>
+                </div>
+                <div class="adiag-vp">
+                  <div class="adiag-canvas" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;padding:20px;">
+                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;">
+                      <span style="background:#EA4B35;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">n8n</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#10a37f;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">OpenAI</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#4285F4;color:#fff;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">Google Calendar</span>
+                      <span style="color:#11cfff;font-weight:700;">→</span>
+                      <span style="background:#18bfff;color:#0a0a0f;padding:6px 14px;border-radius:6px;font-size:0.7rem;font-weight:700;">Airtable</span>
+                    </div>
+                    <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;width:100%;max-width:340px;">
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">① Patient intake triaged by AI — urgency and specialty classified before any doctor is assigned</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">② Reusable Doctor Assignment sub-workflow compares real patient counts, books whichever doctor is least busy</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">③ Dynamic lookup maps resolve the correct Google Calendar and Airtable table at runtime — no hardcoded per-doctor branches</div>
+                      <div style="background:rgba(17,207,255,0.06);border:1px solid rgba(17,207,255,0.12);border-radius:8px;padding:7px 12px;font-size:0.65rem;color:#c8d0e8;">④ Visit notes summarized by AI, follow-up date extracted from free text, rebooked with the same doctor for continuity of care</div>
+                    </div>
+                  </div>
+                  <span class="adiag-hint">Click to expand</span>
+                </div>
+              </div>
+              <div class="acard-info">
+                <div class="acard-icon-row">
+                  <span class="acard-icon">🏥</span>
+                  <div>
+                    <h3 class="acard-title">Care Coordinator</h3>
+                    <div class="acard-chips">
+                      <span class="achip">n8n</span><span class="achip">OpenAI GPT-4o-mini</span>
+                      <span class="achip">Google Calendar</span><span class="achip">Airtable</span><span class="achip">Gmail</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="acard-desc">A full-cycle, multi-entry-point patient care system — 63 nodes across four webhook entry points and one reusable sub-workflow. AI triages incoming symptoms by urgency and specialty, a callable Doctor Assignment sub-workflow compares real patient loads to book whichever of two doctors per specialty is least busy across 8 real Google Calendars, and a Visit Notes agent condenses free-text notes into a continuity-of-care follow-up — rebooked with the same doctor, at the same time slot, automatically.</p>
+                <div class="asteps">
+                  <div class="astep"><span class="astep-n">01</span><span class="astep-t">Patient Intake webhook — a Triage Classifier AI Agent reads symptoms and outputs urgency (emergency/routine) and specialty, before any doctor is assigned</span></div>
+                  <div class="astep"><span class="astep-n">02</span><span class="astep-t">Emergency cases route straight to a human escalation email; routine cases get a booking email asking for a preferred date and time slot</span></div>
+                  <div class="astep"><span class="astep-n">03</span><span class="astep-t">Preferred Date webhook calls the reusable Doctor Assignment sub-workflow — it searches both doctors in the chosen specialty and books whichever has fewer scheduled patients</span></div>
+                  <div class="astep"><span class="astep-n">04</span><span class="astep-t">Dynamic lookup maps resolve the assigned doctor's real Google Calendar ID and Airtable table name at runtime, instead of a hardcoded branch per doctor</span></div>
+                  <div class="astep"><span class="astep-n">05</span><span class="astep-t">A real Calendar event is created and the Airtable record updated via a direct API call, since Airtable's native node can't resolve a table name only known at runtime</span></div>
+                  <div class="astep"><span class="astep-n">06</span><span class="astep-t">Visit Notes webhook summarizes the doctor's free-text notes with AI, extracting a real follow-up date from phrases like "return in 2 weeks"</span></div>
+                  <div class="astep"><span class="astep-n">07</span><span class="astep-t">If a follow-up is needed — the doctor's own judgment, never inferred by AI — it's rebooked directly with the same doctor at the same time slot, preserving continuity of care instead of re-running doctor assignment</span></div>
+                </div>
+                <div class="aupgrade">
+                  <p class="aupgrade-title">⚡ Possible Upgrades</p>
+                  <p class="aupgrade-text">1. Capture and reuse the Google Calendar Event ID so a reschedule updates Calendar, not just Airtable.<br/>2. Add 24-hour-before reminder notifications, now a standing default for future scheduling projects.<br/>3. Real-time availability checking instead of two fixed daily slots, for higher booking volume.</p>
+                </div>
+                <div class="abest">
+                  <p class="abest-title">Best For</p>
+                  <div class="abest-row"><span class="abest-dot abest-sm"></span><span class="abest-size">Small Business</span><span class="abest-desc">A single clinic with one or two doctors per specialty that wants triage and booking handled without a receptionist juggling calendars.</span></div>
+                  <div class="abest-row"><span class="abest-dot abest-md"></span><span class="abest-size">Growing Team</span><span class="abest-desc">A multi-doctor practice that needs patient load balanced automatically across doctors in the same specialty.</span></div>
+                  <div class="abest-row"><span class="abest-dot abest-lg"></span><span class="abest-size">Enterprise</span><span class="abest-desc">A hospital network's continuity-of-care backbone — reusable per-specialty assignment logic that scales to dozens of doctors and calendars.</span></div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /acard-row care-coordinator -->
+
+          <div class="work-auto-sep"></div>
 
           <!-- NEW ROW A: Email Triage AI Agent + OpenClaw Daily Ops Agent -->
           <div class="acard-row">
