@@ -246,15 +246,15 @@
                     </div>
                   </div>
                 </div>
-                <p class="acard-desc">A real, deployable insurance claims pipeline, not a demo — a public intake form guarded by single-use, time-limited tokens feeds an n8n backend that runs genuine agentic RAG over a Supabase pgvector policy reference and vision-based photo verification, redacts PII before any AI ever sees it, and stores evidence behind private signed URLs — before tiering every claim into Auto-Approve, Standard Review, or Escalated for a human reviewer.</p>
+                <p class="acard-desc">A real, deployable insurance claims pipeline, not a demo — ~58 nodes across six n8n workflows (token generation, token cleanup, the core Claim Intake pipeline, Search Claims, Get Claim Details, and Process Reviewer Decision). A public intake form guarded by single-use, time-limited tokens feeds a backend that runs genuine agentic RAG over a Supabase pgvector policy reference and vision-based photo verification, redacts PII before any AI ever sees it, and stores evidence behind private signed URLs — before tiering every claim into Auto-Approve, Standard Review, or Escalated for a human reviewer.</p>
                 <div class="asteps">
                   <div class="astep"><span class="astep-n">01</span><span class="astep-t">Form loads — a single-use, 1-hour intake token is minted and stored in Supabase before the claimant can submit anything</span></div>
                   <div class="astep"><span class="astep-n">02</span><span class="astep-t">Claim Intake webhook validates the token first — exists, unused, unexpired — rejecting silently (generic 401) on any failure, then immediately marks it used to close a duplicate-record risk</span></div>
                   <div class="astep"><span class="astep-n">03</span><span class="astep-t">AI Classifier reads the free-text description and outputs a strict claim_type/confidence pair</span></div>
                   <div class="astep"><span class="astep-n">04</span><span class="astep-t">Specialist Assessment Agent — a true tool-using AI Agent, not a wrapped prompt — decides for itself whether to search the Supabase pgvector policy reference via a custom match_documents() RAG tool, only when a claim looks ambiguous</span></div>
-                  <div class="astep"><span class="astep-n">05</span><span class="astep-t">Deterministic fraud/anomaly checks run in parallel — amount thresholds, claim-type mismatch, policy format — plain code, no AI, where a fixed rule is more reliable</span></div>
-                  <div class="astep"><span class="astep-n">06</span><span class="astep-t">PII (name, policy number) is redacted before the Damage Assessment Agent (GPT-4o vision) ever sees the claim, then it independently judges the actual evidence photo against the description</span></div>
-                  <div class="astep"><span class="astep-n">07</span><span class="astep-t">Claim is tiered Auto-Approve / Standard / Escalated — ambiguous results always default to human review, never the more permissive outcome — and Escalated claims alert a reviewer by email and the custom Reviewer Terminal</span></div>
+                  <div class="astep"><span class="astep-n">05</span><span class="astep-t">Deterministic fraud checks run in parallel as plain code, not AI — amount thresholds, claim-type mismatch, and policy number format</span></div>
+                  <div class="astep"><span class="astep-n">06</span><span class="astep-t">PII is redacted before the Damage Assessment Agent (GPT-4o) ever sees the claim, then independently judges the actual evidence photo against the description</span></div>
+                  <div class="astep"><span class="astep-n">07</span><span class="astep-t">Claim is tiered Auto-Approve / Standard / Escalated — ambiguous results always default to human review, never the more permissive outcome — and Escalated claims alert a reviewer by email</span></div>
                 </div>
                 <div class="aupgrade">
                   <p class="aupgrade-title">⚡ Possible Upgrades</p>
@@ -265,6 +265,13 @@
                   <div class="abest-row"><span class="abest-dot abest-sm"></span><span class="abest-size">Small Business</span><span class="abest-desc">A small agency that wants every claim pre-assessed and pre-sorted before a human ever opens it.</span></div>
                   <div class="abest-row"><span class="abest-dot abest-md"></span><span class="abest-size">Growing Team</span><span class="abest-desc">A dedicated reviewer needs an internal terminal with AI-generated context, not a raw spreadsheet of submissions.</span></div>
                   <div class="abest-row"><span class="abest-dot abest-lg"></span><span class="abest-size">Enterprise</span><span class="abest-desc">A RAG-backed policy engine and vision-based fraud detection built to plug into an existing claims management system.</span></div>
+                </div>
+                <div class="avideo-label-row">
+                  <span class="avideo-chip">▶ Video Walkthrough</span>
+                  <span class="avideo-sub">Watch the claims intake form and AI review pipeline in action</span>
+                </div>
+                <div class="aiframe-box">
+                  <iframe src="https://www.loom.com/embed/5f124eba5d1945e9a4b2a3c0efa8de4c?hideEmbedTopBar=true" title="Claims Full-Cycle Processor Demo" frameborder="0" allowfullscreen></iframe>
                 </div>
               </div>
             </div>
@@ -338,6 +345,13 @@
                   <div class="abest-row"><span class="abest-dot abest-sm"></span><span class="abest-size">Small Business</span><span class="abest-desc">A single clinic with one or two doctors per specialty that wants triage and booking handled without a receptionist juggling calendars.</span></div>
                   <div class="abest-row"><span class="abest-dot abest-md"></span><span class="abest-size">Growing Team</span><span class="abest-desc">A multi-doctor practice that needs patient load balanced automatically across doctors in the same specialty.</span></div>
                   <div class="abest-row"><span class="abest-dot abest-lg"></span><span class="abest-size">Enterprise</span><span class="abest-desc">A hospital network's continuity-of-care backbone — reusable per-specialty assignment logic that scales to dozens of doctors and calendars.</span></div>
+                </div>
+                <div class="avideo-label-row">
+                  <span class="avideo-chip">▶ Video Walkthrough</span>
+                  <span class="avideo-sub">Watch patient intake, doctor assignment, and booking in action</span>
+                </div>
+                <div class="aiframe-box">
+                  <iframe src="https://www.loom.com/embed/9cea3f0269da47c6aac253e72ca6394e?hideEmbedTopBar=true" title="Care Coordinator Demo" frameborder="0" allowfullscreen></iframe>
                 </div>
               </div>
             </div>
