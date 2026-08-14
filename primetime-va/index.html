@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Primetime VA — 50% Off Your First Month</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <span class="logo">Primetime<span class="logo-accent">VA</span></span>
+      <button class="btn btn-primary btn-small" data-scroll-to="lead-form">Claim 50% Off</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <h1>50% Off Your First Month with Primetime&nbsp;VA</h1>
+        <p class="hero-sub">Delegate the busywork to a hand-vetted virtual assistant and get your first month at half price. Claim your offer below — spots are limited.</p>
+        <button class="btn btn-primary btn-large" data-scroll-to="lead-form">Claim My 50% Off</button>
+        <p class="fine-print">*See <a href="#offer-terms">offer terms</a> below.</p>
+      </div>
+    </section>
+
+    <section class="trust-strip">
+      <div class="container trust-grid">
+        <div class="trust-item">
+          <h3>Hand-Vetted VAs</h3>
+          <p>Every assistant is interviewed, background-checked, and skills-tested before we ever introduce you.</p>
+        </div>
+        <div class="trust-item">
+          <h3>Matched Fast</h3>
+          <p>Tell us what you need and we'll match you with the right VA — no lengthy hiring process.</p>
+        </div>
+        <div class="trust-item">
+          <h3>No Long-Term Contracts</h3>
+          <p>Scale up, scale down, or cancel anytime. You're never locked in.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="how-it-works">
+      <div class="container">
+        <h2>How Primetime VA Works</h2>
+        <div class="steps-grid">
+          <div class="step">
+            <span class="step-number">1</span>
+            <h3>Tell Us What You Need</h3>
+            <p>Fill out a short form about your business and the tasks you want off your plate.</p>
+          </div>
+          <div class="step">
+            <span class="step-number">2</span>
+            <h3>Get Matched With a VA</h3>
+            <p>We pair you with a vetted assistant suited to your industry and workload.</p>
+          </div>
+          <div class="step">
+            <span class="step-number">3</span>
+            <h3>Start Delegating</h3>
+            <p>Your VA gets to work — you get your time back.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sample testimonials below — replace with real client quotes before this page goes live. -->
+    <section class="testimonials">
+      <div class="container">
+        <h2>What Clients Say</h2>
+        <div class="testimonial-grid">
+          <blockquote class="testimonial">
+            <p>"My Primetime VA handles my inbox and scheduling so I can actually focus on clients."</p>
+            <cite>— Placeholder Name, Business Owner</cite>
+          </blockquote>
+          <blockquote class="testimonial">
+            <p>"Onboarding took a day. Within a week I couldn't imagine running my business without this."</p>
+            <cite>— Placeholder Name, Founder</cite>
+          </blockquote>
+          <blockquote class="testimonial">
+            <p>"Cut my admin time in half and the quality of work has been consistently great."</p>
+            <cite>— Placeholder Name, Agency Owner</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section id="offer-terms" class="offer-terms">
+      <div class="container">
+        <h2>Offer Terms</h2>
+        <ul>
+          <li>Offer valid for new Primetime VA clients only.</li>
+          <li>50% discount applies to your first month of service only; standard pricing applies thereafter.</li>
+          <li>Limited-time offer — while placement availability lasts.</li>
+          <li>Cannot be combined with any other discount or promotional offer.</li>
+          <li>Discount applied at time of first invoice; no cash value.</li>
+          <li>Primetime VA reserves the right to modify or end this offer at any time.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="lead-form" class="lead-form-section">
+      <div class="container">
+        <h2>Claim Your 50% Off</h2>
+        <p class="form-intro">Tell us a bit about your business and we'll reach out to get your VA matched.</p>
+
+        <form id="offer-form" novalidate>
+          <div class="form-row">
+            <label for="full-name">Full Name</label>
+            <input type="text" id="full-name" name="fullName" required>
+            <span class="field-error" data-error-for="full-name"></span>
+          </div>
+
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <span class="field-error" data-error-for="email"></span>
+          </div>
+
+          <div class="form-row">
+            <label for="phone">Phone <span class="optional">(optional)</span></label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+
+          <div class="form-row">
+            <label for="needs">What do you need help with?</label>
+            <textarea id="needs" name="needs" rows="4" required></textarea>
+            <span class="field-error" data-error-for="needs"></span>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-large">Get My 50% Off</button>
+        </form>
+
+        <div id="form-success" class="form-success" hidden>
+          <h3>Thanks — you're in!</h3>
+          <p>We'll be in touch within one business day to get your VA matched.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span class="logo">Primetime<span class="logo-accent">VA</span></span>
+      <ul class="footer-contact">
+        <li><a href="mailto:hello@primetimeva.example">hello@primetimeva.example</a></li>
+        <li>(555) 010-0100</li>
+      </ul>
+      <p class="copyright">&copy; 2026 Primetime VA. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
