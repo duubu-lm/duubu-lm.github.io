@@ -10,6 +10,15 @@
 
 **Spec:** `docs/superpowers/specs/2026-08-21-meridian-legal-site-design.md`
 
+**Scope addendum (agreed after spec approval):** the user also wants a card
+for this project added to the live portfolio homepage (`index.html` at the
+repo root — this is the actual `duubu-lm.github.io` site), in the same
+simple-card style already used for `LawyerFirm`, `Doctor`, `DuubuAgency`,
+etc. (not the more detailed Automations-tab `acard-row` style, since there's
+no separate automation workflow behind this project to describe). Task 4
+covers this; it's a small, independent, easily-reversible addition (delete
+the one `<div class="card">` block to remove it).
+
 ## Global Constraints
 
 - Colors: `--navy: #1a2b4c`, `--gold: #b8860b` exactly, per the client's existing GHL email branding.
@@ -474,3 +483,71 @@ Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>"
 ```
 
 If no fixes were needed, no commit is required for this task.
+
+---
+
+### Task 4: Add a portfolio card for Meridian Legal
+
+**Files:**
+- Modify: `index.html:167` (repo root — the live portfolio homepage, inside `<div class="grid-3">` in the `#page-work` section)
+
+**Interfaces:**
+- Consumes: `meridian-legal/index.html` (must exist and be reachable from Tasks 1-3 — this task must run after them).
+- Produces: nothing consumed by later tasks.
+
+- [ ] **Step 1: Insert the new card**
+
+In `index.html`, find this closing sequence (the last card in the `grid-3`
+list, followed by the grid's closing tag):
+
+```html
+            <span class="card-tag">GHL · Sales Funnel · Email Automation</span><br />
+            <a href="YukiStrategyCall/index.html" class="card-link">View Project →</a>
+          </div>
+        </div>
+```
+
+Replace it with (adds one new card immediately after the Yuki Strategy Call
+Funnel card, before the `grid-3` closing `</div>`):
+
+```html
+            <span class="card-tag">GHL · Sales Funnel · Email Automation</span><br />
+            <a href="YukiStrategyCall/index.html" class="card-link">View Project →</a>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">⚖️</div>
+            <h3>Meridian Legal</h3>
+            <p>
+              A personal injury law firm site built to match an existing GoHighLevel
+              brand system — practice-area breakdown across auto accident, slip and fall,
+              medical malpractice, and workplace injury claims, driving straight into a
+              live GHL intake form embed.
+            </p>
+            <span class="card-tag">GHL Form Embed · Personal Injury</span><br />
+            <a href="meridian-legal/index.html" class="card-link">View Project →</a>
+          </div>
+        </div>
+```
+
+- [ ] **Step 2: Verify in a browser**
+
+Open `index.html` (repo root) in a browser, navigate to the "Websites" work
+(`#page-work`) view.
+
+Expected:
+- A new card titled "Meridian Legal" with a ⚖️ icon appears after "Yuki
+  Strategy Call Funnel", matching the visual style of the other cards
+  (same size, spacing, tag pill style)
+- Clicking "View Project →" opens `meridian-legal/index.html` and loads the
+  finished site from Tasks 1-3
+- No console errors introduced on the homepage by this change
+
+- [ ] **Step 3: Commit**
+
+```bash
+git add index.html
+git commit -m "Add Meridian Legal card to portfolio homepage
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>"
+```
